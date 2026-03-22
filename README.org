@@ -1,3 +1,15 @@
+#+TITLE: Emacs Org-mode Tutorial
+
+#+BEGIN_EXPORT html
+<p style="border-left: 4px solid #ccc; padding: 0.5em 1em; color: #555;">
+  原著者: <a href="https://github.com/james-stoup" target="_blank">James</a> ／
+  日本語訳: <a href="https://github.com/KaitoMuraoka" target="_blank">とんとんぼ(KaitoMuraoka)</a> ／
+  元リポジトリ: <a href="https://github.com/james-stoup/emacs-org-mode-tutorial" target="_blank">james-a-page/emacs-workflow-tutorial</a>
+  日本語訳リポジトリ: <a href="https://github.com/KaitoMuraoka/emacs-org-mode-tutorial" target="_blank">james-a-page/emacs-workflow-tutorial</a>
+</p>
+#+END_EXPORT
+
+
 * 美しき悪夢、Org Mode
 このドキュメントは、Org Mode 入門者向けのガイドです。生産的でありながら理解しやすい初期設定を、ひとつひとつ丁寧に作り上げていきます。これは、筆者が Org Mode を学び始めたときに欲しかったガイドです。ユーザーのワークフロー・それを支える Org Mode の機能・実際の画面スクリーンショット・そして設定コード、これらをひとつにまとめた解説が必要だと感じていました。このガイドが、あなたの Org Mode 習得の旅に役立つことを願っています。
 
