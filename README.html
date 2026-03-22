@@ -1,0 +1,2830 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-03-22 Sun 13:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Emacs Org-mode Tutorial</title>
+<meta name="author" content="KaitoMuraoka" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Emacs Org-mode Tutorial</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgd1f1b55">1. 美しき悪夢、Org Mode</a>
+<ul>
+<li><a href="#orgf52f206">1.1. Org Mode の習得がこれほど難しい理由</a></li>
+<li><a href="#org62d6219">1.2. このガイドの使い方</a></li>
+</ul>
+</li>
+<li><a href="#org2ca9a59">2. ワークフロー</a>
+<ul>
+<li><a href="#org2c128f7">2.1. このガイドが解決しようとしていること</a></li>
+<li><a href="#org054aac9">2.2. ワークフローを理解する</a>
+<ul>
+<li><a href="#org361eb7a">2.2.1. 個人的なワークフローの例</a></li>
+<li><a href="#org41d0bab">2.2.2. ワークフローの選択肢を理解する</a></li>
+<li><a href="#orgd9e9e6b">2.2.3. 最初のワークフローを決める</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgf524f92">3. キャプチャテンプレートの設定</a>
+<ul>
+<li><a href="#orgd0eab67">3.1. 始める前に</a></li>
+<li><a href="#org5ac4b75">3.2. デフォルト設定</a></li>
+<li><a href="#org1337c90">3.3. インストールするパッケージ</a></li>
+<li><a href="#org13ffccc">3.4. 設定 #1 - 作業ログ</a>
+<ul>
+<li><a href="#org8dff777">3.4.1. キャプチャテンプレート</a></li>
+</ul>
+</li>
+<li><a href="#org0b40a11">3.5. 設定 #2 - シンプルなメモ</a>
+<ul>
+<li><a href="#orga908ca6">3.5.1. キャプチャテンプレート</a></li>
+</ul>
+</li>
+<li><a href="#orgdcadfd9">3.6. 設定 #3 - 汎用TODO</a>
+<ul>
+<li><a href="#org8d57efc">3.6.1. TODOアイテムの構成要素</a></li>
+<li><a href="#org3753d3e">3.6.2. TODOワークフローの説明</a></li>
+<li><a href="#org46081f6">3.6.3. キャプチャテンプレート</a></li>
+<li><a href="#org7ca2e12">3.6.4. Org の状態</a></li>
+</ul>
+</li>
+<li><a href="#org4278386">3.7. 設定 #4 - プログラマー向けTODO</a>
+<ul>
+<li><a href="#org62912aa">3.7.1. バグの追跡</a></li>
+<li><a href="#org776a632">3.7.2. キャプチャテンプレート</a></li>
+</ul>
+</li>
+<li><a href="#org6640991">3.8. 設定 #5 - 会議</a>
+<ul>
+<li><a href="#orgfed2cf4">3.8.1. キャプチャテンプレート</a></li>
+<li><a href="#org8d690a1">3.8.2. クロックレポート</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org34d5b78">4. タグ</a>
+<ul>
+<li><a href="#orge061712">4.1. タグをグループ化する</a></li>
+<li><a href="#org7182446">4.2. 小さく始める</a></li>
+<li><a href="#org6099bb2">4.3. 超具体的なタグより複数タグの組み合わせが良い</a></li>
+<li><a href="#org8ee1566">4.4. タグの定義</a></li>
+<li><a href="#orge00e316">4.5. タグのカラー化</a></li>
+</ul>
+</li>
+<li><a href="#org7fb21c6">5. 基本的なアジェンダの使い方</a>
+<ul>
+<li><a href="#orgc58ef8b">5.1. アジェンダ週次ビュー</a></li>
+<li><a href="#org81b064b">5.2. アジェンダTODOビュー</a></li>
+</ul>
+</li>
+<li><a href="#org860cddb">6. 拡張アジェンダ #1</a>
+<ul>
+<li><a href="#orgcdea517">6.1. アジェンダ拡張ビュー</a></li>
+<li><a href="#org447f699">6.2. アジェンダカスタムコマンド</a></li>
+</ul>
+</li>
+<li><a href="#orgeda6669">7. 拡張アジェンダ #2</a>
+<ul>
+<li><a href="#orgcceea66">7.1. アジェンダカスタムコマンド</a></li>
+</ul>
+</li>
+<li><a href="#org6f9d6da">8. おわりに</a></li>
+<li><a href="#org253b085">9. 美しき悪夢、Org Mode</a>
+<ul>
+<li><a href="#orgc56c7ea">9.1. Org Mode の習得がこれほど難しい理由</a></li>
+<li><a href="#org7334a9f">9.2. このガイドの使い方</a></li>
+</ul>
+</li>
+<li><a href="#org6c362f6">10. ワークフロー</a>
+<ul>
+<li><a href="#org6e93422">10.1. このガイドが解決しようとしていること</a></li>
+<li><a href="#org4c93393">10.2. ワークフローを理解する</a>
+<ul>
+<li><a href="#org3993465">10.2.1. 個人的なワークフローの例</a></li>
+<li><a href="#orgbf86f9d">10.2.2. ワークフローの選択肢を理解する</a></li>
+<li><a href="#org1aefee5">10.2.3. 最初のワークフローを決める</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org50ce213">11. キャプチャテンプレートの設定</a>
+<ul>
+<li><a href="#orge89a06c">11.1. 始める前に</a></li>
+<li><a href="#orgde6199d">11.2. デフォルト設定</a></li>
+<li><a href="#orgf7509cc">11.3. インストールするパッケージ</a></li>
+<li><a href="#orgd7d7bc9">11.4. 設定 #1 - 作業ログ</a>
+<ul>
+<li><a href="#org0db4a1a">11.4.1. キャプチャテンプレート</a></li>
+</ul>
+</li>
+<li><a href="#orgb9a4db3">11.5. 設定 #2 - シンプルなメモ</a>
+<ul>
+<li><a href="#org672c1fe">11.5.1. キャプチャテンプレート</a></li>
+</ul>
+</li>
+<li><a href="#org4afe8f9">11.6. 設定 #3 - 汎用TODO</a>
+<ul>
+<li><a href="#org019cb81">11.6.1. TODOアイテムの構成要素</a></li>
+<li><a href="#orgb2c45ab">11.6.2. TODOワークフローの説明</a></li>
+<li><a href="#orge984f88">11.6.3. キャプチャテンプレート</a></li>
+<li><a href="#org6bdfc6f">11.6.4. Org の状態</a></li>
+</ul>
+</li>
+<li><a href="#orge7dc731">11.7. 設定 #4 - プログラマー向けTODO</a>
+<ul>
+<li><a href="#org9c68051">11.7.1. バグの追跡</a></li>
+<li><a href="#org5425beb">11.7.2. キャプチャテンプレート</a></li>
+</ul>
+</li>
+<li><a href="#org1ab2236">11.8. 設定 #5 - 会議</a>
+<ul>
+<li><a href="#orgf08828f">11.8.1. キャプチャテンプレート</a></li>
+<li><a href="#org2ce5ef7">11.8.2. クロックレポート</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org70e50ec">12. タグ</a>
+<ul>
+<li><a href="#org0500883">12.1. タグをグループ化する</a></li>
+<li><a href="#org2c9f25d">12.2. 小さく始める</a></li>
+<li><a href="#org743ec17">12.3. 超具体的なタグより複数タグの組み合わせが良い</a></li>
+<li><a href="#org90357f6">12.4. タグの定義</a></li>
+<li><a href="#org143b43c">12.5. タグのカラー化</a></li>
+</ul>
+</li>
+<li><a href="#org9cb1d83">13. 基本的なアジェンダの使い方</a>
+<ul>
+<li><a href="#orgf5050b1">13.1. アジェンダ週次ビュー</a></li>
+<li><a href="#org3a6318b">13.2. アジェンダTODOビュー</a></li>
+</ul>
+</li>
+<li><a href="#org8424730">14. 拡張アジェンダ #1</a>
+<ul>
+<li><a href="#orgc45d07c">14.1. アジェンダ拡張ビュー</a></li>
+<li><a href="#org46cc5e0">14.2. アジェンダカスタムコマンド</a></li>
+</ul>
+</li>
+<li><a href="#orgf10074e">15. 拡張アジェンダ #2</a>
+<ul>
+<li><a href="#orgeca0eb0">15.1. アジェンダカスタムコマンド</a></li>
+</ul>
+</li>
+<li><a href="#org93d7104">16. おわりに</a></li>
+</ul>
+</div>
+</div>
+<p style="border-left: 4px solid #ccc; padding: 0.5em 1em; color: #555;">
+  原著者: <a href="https://github.com/james-stoup" target="_blank">James</a> ／
+  日本語訳: <a href="https://github.com/KaitoMuraoka" target="_blank">とんとんぼ(KaitoMuraoka)</a> ／
+  元リポジトリ: <a href="https://github.com/james-stoup/emacs-org-mode-tutorial" target="_blank">james-a-page/emacs-workflow-tutorial</a>
+  日本語訳リポジトリ: <a href="https://github.com/KaitoMuraoka/emacs-org-mode-tutorial" target="_blank">james-a-page/emacs-workflow-tutorial</a>
+</p>
+<div id="outline-container-orgd1f1b55" class="outline-2">
+<h2 id="orgd1f1b55"><span class="section-number-2">1.</span> 美しき悪夢、Org Mode</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+このドキュメントは、Org Mode 入門者向けのガイドです。生産的でありながら理解しやすい初期設定を、ひとつひとつ丁寧に作り上げていきます。これは、筆者が Org Mode を学び始めたときに欲しかったガイドです。ユーザーのワークフロー・それを支える Org Mode の機能・実際の画面スクリーンショット・そして設定コード、これらをひとつにまとめた解説が必要だと感じていました。このガイドが、あなたの Org Mode 習得の旅に役立つことを願っています。
+</p>
+</div>
+<div id="outline-container-orgf52f206" class="outline-3">
+<h3 id="orgf52f206"><span class="section-number-3">1.1.</span> Org Mode の習得がこれほど難しい理由</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Org Mode の学習が困難なのは、その複雑さに圧倒されやすいからです。Org Mode に関する情報を調べてみると、多くの場合、全体像が一枚岩として提示されており、どこから手をつければいいのかまったくわかりません。入門ガイドの多くは基本的な機能を説明したあと、熟練ユーザーによる壮大で複雑なカスタム設定を紹介します。初心者から上級者へと至る道筋は示されず、「とにかく触り続ければわかる」といった曖昧なアドバイスとありきたりな決まり文句だけが残ります。
+</p>
+
+<p>
+はっきり言います。そんなアドバイスは無意味です。
+</p>
+
+<p>
+他のツールであれば、セットアップウィザードやサンプル設定、入門チュートリアルが用意されているものです。しかし Org Mode は、ユーザー自身が理想のワークフローを構築するためのオープンエンドなフレームワークとして設計されています。この点においては、Org Mode を Emacs の中のプログラミング言語だと考えると理解しやすいかもしれません。導入の難しさも、そう考えれば納得がいきます。プログラマーでなければ（しかも Lisp の経験がなければ）、Org Mode の学習曲線は非常に険しいものになるでしょう。
+</p>
+</div>
+</div>
+<div id="outline-container-org62d6219" class="outline-3">
+<h3 id="org62d6219"><span class="section-number-3">1.2.</span> このガイドの使い方</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Org Mode 入門者には、まず「ワークフロー」のセクションを読むことを強くおすすめします。自分のニーズが見えてきたら、各種設定を読み進めてください。その段階で、コードを自分の設定ファイルに書き込み、実際に Org Mode を使ってみることをおすすめします。どのように動くかを観察し、自分に合うものを感覚として掴んでいきましょう。基本をしっかり押さえたら、「タグ」と「アジェンダ」のセクションに戻ってきてください。
+</p>
+
+<p>
+内容は盛りだくさんですが、これでも Org Mode が持つ機能のほんの一部にすぎません。焦らず、少しずつ進んでいきましょう。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org2ca9a59" class="outline-2">
+<h2 id="org2ca9a59"><span class="section-number-2">2.</span> ワークフロー</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+誰もが読み飛ばしてしまうこの章こそ、実は最重要です。Org Mode の学習が最初うまくいかなかったのは、順番を間違えていたからです。何をさせたいのかまったく決めないまま、使い始めようとしていました。
+</p>
+</div>
+<div id="outline-container-org2c128f7" class="outline-3">
+<h3 id="org2c128f7"><span class="section-number-3">2.1.</span> このガイドが解決しようとしていること</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Org Mode を理解するには、二段階のプロセスが必要です。第一段階は、自分に合った仮のワークフローを決めること。第二段階は、そのワークフローを支える Org Mode の機能を見つけること。
+</p>
+
+<p>
+このガイドは、あなたにとって最適なワークフローを探る手助けをします。そのうえで、いくつかの典型的な Org 設定を紹介し、それぞれがワークフローのどの部分を支えるかを示します。すべてはモジュール形式になっているので、必要なものを自由に選んで組み込めます。考えられるワークフローや機能を網羅しているわけではなく、入門者が応用できる典型例を示すことを目的としています。
+</p>
+
+<p>
+では、問題の核心に迫りましょう。
+</p>
+</div>
+</div>
+<div id="outline-container-org054aac9" class="outline-3">
+<h3 id="org054aac9"><span class="section-number-3">2.2.</span> ワークフローを理解する</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Org Mode の入門サイトの多くは、その人の非常に具体的なワークフローを支える詳細な設定を紹介しています。その人にとっては素晴らしいものでも、読んでいる自分が本当に必要としているのはその10%にすぎないことがほとんどです。しかも、ひとつの完結した全体として提示されているため、欲しい部分だけを切り出すのが難しく、どこをいじると何が壊れるかもわかりません。
+</p>
+
+<p>
+ですから、設定コードを書き始める前に、一歩引いて考える必要があります。「自分のワークフローはどうあるべきか？」という問いに向き合うことです。
+</p>
+
+<p>
+このドキュメントで「ワークフロー」という言葉を何度も使うので、ここで定義しておきましょう。ワークフローとは、あるタスクを完遂するためのすべての手順の総体です。情報の処理、進捗の追跡、重要な詳細の整理、リソースの管理など、さまざまなステップが含まれます。
+</p>
+
+<p>
+あなたにはすでに、メールクライアント・カレンダー・付箋・ノート・テキストメッセージ・Word 文書などを使ったワークフローがあるはずです。Org は生活の複雑さを魔法のように解決してくれるわけではありませんが、その複雑さを管理するのをずっと楽にしてくれます。このガイドを読み終える頃には、Org Mode を自分の既存のルーティンに組み込む方法が見えてくるはずです。
+</p>
+
+<p>
+ワークフローをより具体的に示すため、筆者自身の例を紹介します。
+</p>
+</div>
+<div id="outline-container-org361eb7a" class="outline-4">
+<h4 id="org361eb7a"><span class="section-number-4">2.2.1.</span> 個人的なワークフローの例</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+家のプロジェクト、たとえば作りたい家具、家のリノベーション、DIY作業、将来買いたい工具などを管理したいとします。こういったプロジェクトの典型的な流れはこうなります。
+</p>
+
+<p>
+<code>プロジェクト作成 → 詳細追加 → メモ追加 → 調査 → 作業開始 → 完成</code>
+</p>
+
+<p>
+たとえば新しいダイニングテーブルを作るなら、プロジェクトのエントリーを作り、サイズや必要な座席数などの詳細を追加します。次にスタイル（カントリー風かモダン風か）や木材（オークとウォールナットの価格比較）について調査します。すべての情報が揃ったら手順（木材の購入・採寸・カット・組み立て・仮組み・ヤスリ・塗装・仕上げ）を作り、どれくらいかかるか（何週間もの休日）を見積もってから、実際の作業に入ります。
+</p>
+</div>
+</div>
+<div id="outline-container-org41d0bab" class="outline-4">
+<h4 id="org41d0bab"><span class="section-number-4">2.2.2.</span> ワークフローの選択肢を理解する</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+さて、あなたは Org Mode を使って……何かをしたいと思っています。何がしたいかはまだよくわからないけど、賢い人たちがこぞって便利だと言うから試してみたい、というわけです。そして多くの入門者がそうするように、入門ガイドを読み、ドキュメントをざっと眺め、何もわからないまま途方に暮れて、やがて諦めた——。
+</p>
+
+<p>
+でも今日は違います。今日から変わります。
+</p>
+
+<p>
+まず、どんなふうに使いたいかをブレインストーミングすることから始めましょう。最初は、自分のワークフローのもっともシンプルなバージョンだけを考えてください。これは後から変わるものだ、何も決定事項ではない、という前提で取り組みましょう。あくまで「捨てられる初稿」として扱ってください——Org Mode への理解が深まるにつれて、大幅に修正・再設計されていくものです。以下のリストを見て、自分の新しい Org Mode ワークフローに取り込みたいものがあるか確認しましょう。
+</p>
+
+<p>
+<b>よくあるワークフローの構成要素</b>
+</p>
+<ul class="org-ul">
+<li>メールの処理</li>
+<li>会議メモの記録</li>
+<li>期限付きイベントの追跡</li>
+<li>定期的なイベントの追跡</li>
+<li>汎用TODOリスト</li>
+<li>日記</li>
+<li>作業ログ</li>
+<li>タスクの優先順位付け</li>
+<li>時間の記録</li>
+<li>レポートの生成</li>
+<li>プレゼンのアウトライン</li>
+<li>本のアウトライン</li>
+<li>JIRAチケットの管理</li>
+<li>コードのバグ追跡</li>
+<li>一般的なフォーマットへのドキュメント出力</li>
+</ul>
+
+<p>
+など、他にもたくさんあります。
+</p>
+
+<p>
+余談ですが、筆者がなかなか理解できなかったことのひとつに「すべてを連携させなくてもいい」というポイントがあります。日記をつけたいなら、それを他の何かと統合する必要はありません。会議メモをひとつのファイルに、TODOを別のファイルに保存して、それらをアジェンダビューで参照する、という使い方でいいのです。
+</p>
+</div>
+</div>
+<div id="outline-container-orgd9e9e6b" class="outline-4">
+<h4 id="orgd9e9e6b"><span class="section-number-4">2.2.3.</span> 最初のワークフローを決める</h4>
+<div class="outline-text-4" id="text-2-2-3">
+<p>
+ここまできたら、上のリストを眺めて（あくまで一例であり網羅的なリストではありません）、取り入れたいものを選びましょう。すべての例を実装するつもりはありません（それは小さな一冊分の作業になりますし、そこまでの根気はありません）が、重要なものをいくつか実装することで、自分のワークフローを構築するための土台になるはずです。
+</p>
+
+<p>
+やりたいことが決まったら、Org Mode を組み込むためのもっともシンプルなやり方を考えましょう。たとえば、こういう考え方はやめてください。
+</p>
+
+<p>
+<i>"メールクライアントと連携して、メールを取り込んで、タグを付けて、そこからTODOを作って、アジェンダビューに表示するにはどうすればいいか……"</i>
+</p>
+
+<p>
+こういう考え方にしてください。
+</p>
+
+<p>
+<i>"メールからTODOを作りたい"</i>
+</p>
+
+<p>
+2番目の考え方には、複雑な設定は不要です。もちろんその分、手動の手順が増えることになりますが、それで構いません！この例で言えば、次のようなワークフローを考えてみてください。
+</p>
+
+<p>
+<b>試しのワークフロー案</b>
+</p>
+<ul class="org-ul">
+<li>ブラウザでGmailを開く</li>
+<li>未読メッセージを確認する</li>
+<li>Emacsを開く</li>
+<li>新しいメール用TODOを作成する</li>
+<li>コピー＆ペーストで詳細を記入する</li>
+<li>これを1週間続ける</li>
+<li>充実した毎日を送る</li>
+</ul>
+
+<p>
+こう思うかもしれません。これは面倒だ。つまらない。Org Modeの機能を全然活かしていない！あの「魔法」はどこへ行ったんだ？
+</p>
+
+<p>
+その気持ちはわかります、本当に。でも今はその段階ではありません。このステップは、この試しのワークフローが実際に役立つかどうかを見極めることが目的です。役立つなら、Emacs をメールの処理ハブに育てていけばいい。でも数日やってみて、「実はメールよりも会議の方がTODOの発生源だった」と気づくかもしれません。そうなれば、メールを中心に据えたワークフローは自分には合わないということになります。
+</p>
+
+<p>
+残念ながら近道はありません。いろいろ試して、何がしっくりくるかを見つけるしかない。万人向けの正解など存在しないのです。大切なのは、いろいろなアプローチを試すこと、最小限の投資（メール設定に10時間かけた後に結局使わなくなったときの虚しさを想像してください）で始めること、そして使えると感じた部分を磨いていくこと。
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf524f92" class="outline-2">
+<h2 id="orgf524f92"><span class="section-number-2">3.</span> キャプチャテンプレートの設定</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+このセクションでは、先ほど挙げたワークフローの要素のいくつかを支える、5種類の設定を紹介します。それぞれ Org Mode の共通の設計思想を示しながらも、Org のもっとも便利な機能をそれぞれ異なる形で見せてくれます。
+</p>
+
+<p>
+いよいよ核心に入ります。以下に一連の手順が記されています。設定間の依存関係があるため、すべてを順番に読み通してから実装に移ることをおすすめします。できるだけ独立した形で書いていますが、全体を把握してから取り組む方が確実です。
+</p>
+</div>
+<div id="outline-container-orgd0eab67" class="outline-3">
+<h3 id="orgd0eab67"><span class="section-number-3">3.1.</span> 始める前に</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+リストを眺めて、試したいものをいくつか選び、ワークフローのイメージが固まったら、いよいよ設定に入りましょう。まず <a href="https://orgmode.org/quickstart.html">Org Mode クイックスタートガイド</a> をまだ読んでいなければ確認しておきましょう。すべてを暗記する必要はありませんが、ブラウザで開いておき、わからないことがあれば参照できるようにしておくと便利です。また、Emacs の設定についてある程度の知識があると助かります。はじめてでも何とかなりますが、Org Mode を Emacs 入門の最初のパッケージに選ぶのはおすすめしません。
+</p>
+</div>
+</div>
+<div id="outline-container-org5ac4b75" class="outline-3">
+<h3 id="org5ac4b75"><span class="section-number-3">3.2.</span> デフォルト設定</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+以下は、筆者が使いやすさのために設定している Org Mode のデフォルト設定です。このリポジトリの .emacs ファイルに全設定がまとめてあります。後ほど追加の設定も紹介しますが、まずは基本的なものから始めましょう。これらの行を .emacs ファイル（または設定ファイル）にコピーしてください。
+</p>
+
+<p>
+<b>Org Mode デフォルト設定</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #989898;">;; </span><span style="color: #989898;">use-package &#12364;&#12414;&#12384;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12373;&#12428;&#12390;&#12356;&#12394;&#12356;&#22580;&#21512;&#12398;&#28310;&#20633;
+</span>(<span style="color: #b6a0ff;">unless</span> (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">use-package &#12434;&#26377;&#21177;&#21270;
+</span>(<span style="color: #b6a0ff;">eval-when-compile</span>
+  (<span style="color: #b6a0ff;">require</span> '<span style="color: #00bcff;">use-package</span>))
+(<span style="color: #b6a0ff;">setq</span> use-package-always-ensure t)
+(<span style="color: #b6a0ff;">use-package</span> org
+  <span style="color: #f78fe7;">:pin</span> gnu)
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">&#12450;&#12472;&#12455;&#12531;&#12480;&#12364;&#12501;&#12449;&#12452;&#12523;&#12434;&#26908;&#32034;&#12391;&#12365;&#12427;&#12424;&#12358;&#12289;&#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12434;&#25351;&#23450;&#12377;&#12427;
+</span>(<span style="color: #b6a0ff;">setq</span> org-agenda-files '(<span style="color: #79a8ff;">"~/org"</span>))
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">TODO&#12364;&#23436;&#20102;&#29366;&#24907;&#12395;&#12394;&#12387;&#12383;&#12392;&#12365;&#12289;&#12479;&#12452;&#12512;&#12473;&#12479;&#12531;&#12503;&#12434;&#35352;&#37682;&#12377;&#12427;
+</span>(<span style="color: #b6a0ff;">setq</span> org-log-done 'time)
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">Enter&#12461;&#12540;&#12391;&#12522;&#12531;&#12463;&#12434;&#38283;&#12367;
+</span>(<span style="color: #b6a0ff;">setq</span> org-return-follows-link  t)
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">&#12377;&#12409;&#12390;&#12398; .org &#12501;&#12449;&#12452;&#12523;&#12434; Org Mode &#12395;&#38306;&#36899;&#20184;&#12369;&#12427;
+</span>(add-to-list 'auto-mode-alist '(<span style="color: #79a8ff;">"\\.org\\'"</span> . org-mode))
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">&#12452;&#12531;&#12487;&#12531;&#12488;&#12434;&#35211;&#12420;&#12377;&#12367;&#12377;&#12427;
+</span>(add-hook 'org-mode-hook 'org-indent-mode)
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">&#20778;&#20808;&#24230;&#12398;&#22793;&#26356;&#12461;&#12540;&#12434; UP/DOWN &#12461;&#12540;&#12395;&#21106;&#12426;&#24403;&#12390;&#12427;
+</span>(define-key org-mode-map (kbd <span style="color: #79a8ff;">"C-c &lt;up&gt;"</span>) 'org-priority-up)
+(define-key org-mode-map (kbd <span style="color: #79a8ff;">"C-c &lt;down&gt;"</span>) 'org-priority-down)
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">&#12522;&#12531;&#12463;&#12398;&#20445;&#23384;&#12289;&#12450;&#12472;&#12455;&#12531;&#12480;&#12398;&#34920;&#31034;&#12289;&#12461;&#12515;&#12503;&#12481;&#12515;&#12398;&#36215;&#21205;&#12398;&#12471;&#12519;&#12540;&#12488;&#12459;&#12483;&#12488;
+</span>(define-key global-map <span style="color: #79a8ff;">"\C-cl"</span> 'org-store-link)
+(define-key global-map <span style="color: #79a8ff;">"\C-ca"</span> 'org-agenda)
+(define-key global-map <span style="color: #79a8ff;">"\C-cc"</span> 'org-capture)
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">Org &#12450;&#12452;&#12486;&#12512;&#12398;&#12524;&#12505;&#12523;&#12434;&#22793;&#26356;&#12377;&#12427;&#12395;&#12399; SMR &#12434;&#20351;&#12358;
+</span>(define-key org-mode-map (kbd <span style="color: #79a8ff;">"C-c C-g C-r"</span>) 'org-shiftmetaright)
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">&#12510;&#12540;&#12459;&#12540;&#12434;&#38750;&#34920;&#31034;&#12395;&#12375;&#12390;&#12289;&#22826;&#23383;&#12399; *BOLD* &#12391;&#12399;&#12394;&#12367; BOLD &#12392;&#12375;&#12390;&#34920;&#31034;&#12377;&#12427;
+</span>(<span style="color: #b6a0ff;">setq</span> org-hide-emphasis-markers t)
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">&#35501;&#12415;&#12420;&#12377;&#12367;&#12377;&#12427;&#12383;&#12417;&#12289;Org Mode &#12391;&#12399;&#34892;&#12434;&#25240;&#12426;&#36820;&#12377;
+</span>(add-hook 'org-mode-hook 'visual-line-mode)
+</pre>
+</div>
+
+<p>
+<b>任意の Org Mode 設定</b>
+</p>
+
+<p>
+筆者はこの設定でレイアウトが見やすくなると感じていますが、好みは人それぞれなので、任意設定としています。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b6a0ff;">let*</span> ((variable-tuple
+        (<span style="color: #b6a0ff;">cond</span> ((x-list-fonts <span style="color: #79a8ff;">"ETBembo"</span>)         '(<span style="color: #f78fe7;">:font</span> <span style="color: #79a8ff;">"ETBembo"</span>))
+              ((x-list-fonts <span style="color: #79a8ff;">"Source Sans Pro"</span>) '(<span style="color: #f78fe7;">:font</span> <span style="color: #79a8ff;">"Source Sans Pro"</span>))
+              ((x-list-fonts <span style="color: #79a8ff;">"Lucida Grande"</span>)   '(<span style="color: #f78fe7;">:font</span> <span style="color: #79a8ff;">"Lucida Grande"</span>))
+              ((x-list-fonts <span style="color: #79a8ff;">"Verdana"</span>)         '(<span style="color: #f78fe7;">:font</span> <span style="color: #79a8ff;">"Verdana"</span>))
+              ((x-family-fonts <span style="color: #79a8ff;">"Sans Serif"</span>)    '(<span style="color: #f78fe7;">:family</span> <span style="color: #79a8ff;">"Sans Serif"</span>))
+              (nil (<span style="color: #fec43f;">warn</span> <span style="color: #79a8ff;">"&#12469;&#12531;&#12475;&#12522;&#12501;&#12501;&#12457;&#12531;&#12488;&#12364;&#35211;&#12388;&#12363;&#12426;&#12414;&#12379;&#12435;&#12290;Source Sans Pro &#12434;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;"</span>))))
+       (base-font-color     (face-foreground 'default nil 'default))
+       (headline           `(<span style="color: #f78fe7;">:inherit</span> default <span style="color: #f78fe7;">:weight</span> bold <span style="color: #f78fe7;">:foreground</span> ,base-font-color)))
+
+  (custom-theme-set-faces
+   'user
+   `(org-level-8 ((t (,@headline ,@variable-tuple))))
+   `(org-level-7 ((t (,@headline ,@variable-tuple))))
+   `(org-level-6 ((t (,@headline ,@variable-tuple))))
+   `(org-level-5 ((t (,@headline ,@variable-tuple))))
+   `(org-level-4 ((t (,@headline ,@variable-tuple <span style="color: #f78fe7;">:height</span> 1.1))))
+   `(org-level-3 ((t (,@headline ,@variable-tuple <span style="color: #f78fe7;">:height</span> 1.2))))
+   `(org-level-2 ((t (,@headline ,@variable-tuple <span style="color: #f78fe7;">:height</span> 1.3))))
+   `(org-level-1 ((t (,@headline ,@variable-tuple <span style="color: #f78fe7;">:height</span> 1.5))))
+   `(org-document-title ((t (,@headline ,@variable-tuple <span style="color: #f78fe7;">:height</span> 1.6 <span style="color: #f78fe7;">:underline</span> nil))))))
+</pre>
+</div>
+
+<p>
+高さの倍率は好みに合わせて変えてください。これが筆者の設定ですが、大きくしたい・小さくしたいという方はご自由にどうぞ。これらをすべて .emacs ファイルに貼り付けて、Emacs を再起動したら準備完了です。
+</p>
+</div>
+</div>
+<div id="outline-container-org1337c90" class="outline-3">
+<h3 id="org1337c90"><span class="section-number-3">3.3.</span> インストールするパッケージ</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+以下のパッケージを使用しています。手動でインストールする場合はこちらのリストを参照してください。
+</p>
+<ul class="org-ul">
+<li>org-super-agenda</li>
+<li>comment-tags</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org13ffccc" class="outline-3">
+<h3 id="org13ffccc"><span class="section-number-3">3.4.</span> 設定 #1 - 作業ログ</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+日々の仕事の成果を記録することを、筆者は非常に役立てています。ただし、これは日記ではありません。Org Mode を日記として使う方法は、別のチュートリアルやパッケージがすでに存在します。日記を求めているなら、この設定はスキップしてください。
+</p>
+
+<p>
+この場合の日記は数段落にわたる長文の日々の記録を指し、作業ログは成果を箇条書きにしたもの（必要に応じて補足あり）を指します。
+</p>
+
+<p>
+完成イメージ：
+</p>
+
+
+<div id="org2a97a66" class="figure">
+<p><img src="images/work-log-screenshot.png" alt="work-log-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>作業ログ スクリーンショット</p>
+</div>
+
+<p>
+これを実現するために必要なコードは以下の通りです。
+</p>
+</div>
+<div id="outline-container-org8dff777" class="outline-4">
+<h4 id="org8dff777"><span class="section-number-4">3.4.1.</span> キャプチャテンプレート</h4>
+<div class="outline-text-4" id="text-3-4-1">
+<p>
+キャプチャテンプレートを起動したとき、キーは「j」を使います。「j」にしたのは、自宅では日記（journal）に「j」を使っており、「考えを記録する」という行為に一貫して同じキーを割り当てたかったからです。「w」にしたい方はもちろん変えていただいて構いません。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b6a0ff;">setq</span> org-capture-templates
+      '(    
+        (<span style="color: #79a8ff;">"j"</span> <span style="color: #79a8ff;">"&#20316;&#26989;&#12525;&#12464;&#12456;&#12531;&#12488;&#12522;"</span>
+         entry (file+datetree <span style="color: #79a8ff;">"~/org/work-log.org"</span>)
+         <span style="color: #79a8ff;">"* %?"</span>
+         <span style="color: #f78fe7;">:empty-lines</span> 0)
+        ))
+</pre>
+</div>
+
+<p>
+すべての作業ログは、上の画像に示す日付構造で <code>work-log.org</code> ファイルに保存されます。この構造の変更方法については、マニュアルの <code>org-capture-templates</code> を参照してください。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org0b40a11" class="outline-3">
+<h3 id="org0b40a11"><span class="section-number-3">3.5.</span> 設定 #2 - シンプルなメモ</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+どうでもいい情報を一時的に保存しておく場所です。物置の扉の暗証番号、どこかにしまった「いつか必要になる部品」の置き場所、何度も調べ直してしまうちょっとした豆知識、といったものを記録します。タグも絞り込みも自動処理も何もありません。これは考えられる中でもっともシンプルな Org Mode の活用例で、参考として掲載しています。
+</p>
+
+
+<div id="org0b56c07" class="figure">
+<p><img src="images/random-notes-screenshot.png" alt="random-notes-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>ランダムメモ スクリーンショット</p>
+</div>
+
+<p>
+キャプチャテンプレートはこちらです。
+</p>
+</div>
+<div id="outline-container-orga908ca6" class="outline-4">
+<h4 id="orga908ca6"><span class="section-number-4">3.5.1.</span> キャプチャテンプレート</h4>
+<div class="outline-text-4" id="text-3-5-1">
+<p>
+上の作業ログテンプレートと合わせて使いたい場合は、~(setq org-capture&#x2026;~ から始まる全体ではなく、小さなサブセクションだけをコピーすれば十分です。シンプルなメモのテンプレートはこちらです。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b6a0ff;">setq</span> org-capture-templates
+      '(    
+        (<span style="color: #79a8ff;">"n"</span> <span style="color: #79a8ff;">"&#12513;&#12514;"</span>
+         entry (file+headline <span style="color: #79a8ff;">"~/org/notes.org"</span> <span style="color: #79a8ff;">"&#12521;&#12531;&#12480;&#12512;&#12513;&#12514;"</span>)
+         <span style="color: #79a8ff;">"** %?"</span>
+         <span style="color: #f78fe7;">:empty-lines</span> 0)
+        ))
+</pre>
+</div>
+
+<p>
+ここには日付の構造は不要で、ランダムなメモが長いリストとして並ぶだけです。同じファイルに「ドアの暗証番号」という別の見出しを追加したい場合は、次のようにキャプチャテンプレートをもう一つ追加できます。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b6a0ff;">setq</span> org-capture-templates
+      '(
+        (<span style="color: #79a8ff;">"n"</span> <span style="color: #79a8ff;">"&#12513;&#12514;"</span>
+         entry (file+headline <span style="color: #79a8ff;">"~/org/notes.org"</span> <span style="color: #79a8ff;">"&#12521;&#12531;&#12480;&#12512;&#12513;&#12514;"</span>)
+         <span style="color: #79a8ff;">"** %?"</span>
+         <span style="color: #f78fe7;">:empty-lines</span> 0)
+
+        (<span style="color: #79a8ff;">"d"</span> <span style="color: #79a8ff;">"&#12489;&#12450;&#12398;&#26263;&#35388;&#30058;&#21495;"</span>
+         entry (file+headline <span style="color: #79a8ff;">"~/org/notes.org"</span> <span style="color: #79a8ff;">"&#12489;&#12450;&#12398;&#26263;&#35388;&#30058;&#21495;"</span>)
+         <span style="color: #79a8ff;">"** %?"</span>
+         <span style="color: #f78fe7;">:empty-lines</span> 0)
+        ))
+</pre>
+</div>
+
+<p>
+このキャプチャテンプレートで記録された内容はすべて、対応する見出しの下に保存されます。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdcadfd9" class="outline-3">
+<h3 id="orgdcadfd9"><span class="section-number-3">3.6.</span> 設定 #3 - 汎用TODO</h3>
+<div class="outline-text-3" id="text-3-6">
+<p>
+いよいよ Org Mode が素晴らしい理由の核心、TODOアイテムの追跡機能に踏み込んでいきます！この機能を深く掘り下げるには複数の設定が必要ですが、まずシンプルな「汎用TODO」から始め、後のステップで機能を追加していきます。アジェンダのセクションでTODOの整理方法を扱いますが、ここではまずTODOを作ることに集中します。
+</p>
+
+
+<div id="org916d653" class="figure">
+<p><img src="images/general-tasks-screenshot.png" alt="general-tasks-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 3: </span>汎用タスク スクリーンショット</p>
+</div>
+
+<p>
+ひとつのTODOを詳しく見てみましょう。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">* OBE [#B] Mikeに壊れたリストアについて聞く
+  CLOSED: [2021-11-15 Mon 13:09]
+  - State "OBE"       from "IN-PROGRESS" [2021-11-15 Mon 13:09]
+  - State "IN-PROGRESS" from "TODO"       [2021-11-09 Tue 15:13] \\
+    CCRS-4453 に取り込む。
+
+  具体的には、リストアが失敗したときどうするか。そのままの状態にしておくのか？
+
+</pre>
+</div>
+
+<p>
+ここにはいろいろな要素が詰まっているので、各部分に分解して説明します。このTODOの構成要素は以下の通りです。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">* 状態 [#優先度] タイトル
+  - 状態変化 2              タイムスタンプ
+  - 状態変化 1              タイムスタンプ
+    状態変化 1 に関するメモ
+
+  TODOに関するメモ
+</pre>
+</div>
+</div>
+<div id="outline-container-org8d57efc" class="outline-4">
+<h4 id="org8d57efc"><span class="section-number-4">3.6.1.</span> TODOアイテムの構成要素</h4>
+<div class="outline-text-4" id="text-3-6-1">
+<p>
+各要素を順番に見ていきましょう。
+</p>
+
+<p>
+<b>状態</b>
+このTODOは <code>OBE~（overcome by events：状況の変化により不要になった）に設定されています。他のTODOは ~DONE~・~TODO~・~IN-PROGRESS</code> などに設定されます。状態の設定方法はすぐ後で説明しますが、今はそれぞれのTODOが複数の状態を遷移できる、ということだけ知っておけば十分です。
+</p>
+
+<p>
+<b>優先度</b>
+各TODOには優先度を設定できます。[DEFCON 1, TROUBLE, MILDLY-BAD, SAFELY-IGNORE] のように独自のセットを作ることもできますが、デフォルトの [A,B,C] で十分機能します。ここでは <code>A</code> が最高優先度、~C~ が最低優先度です。アジェンダビューの説明に進めばより理解できるので、今は深く考えなくて大丈夫です。
+</p>
+
+<p>
+<b>タイトル</b>
+キャプチャメニューから入力されるTODOの名前です。
+</p>
+
+<p>
+<b>状態変化 2</b>
+最新の状態変化です。この例では <code>IN-PROGRESS</code> から <code>OBE</code> へ変化し、その際のタイムスタンプが記録されています。
+</p>
+
+<p>
+<b>状態変化 1</b>
+最初の状態変化です。~TODO~ から <code>IN-PROGRESS</code> への変化と、そのタイムスタンプが記録されています。
+</p>
+
+<p>
+<b>状態変化 1 のメモ</b>
+このTODOの作業が開始され、状態が変化したときに追加されたメモです。
+</p>
+
+<p>
+<b>メモ</b>
+詳細はここに記載します。もっと詳しく書くこともできますが、この例では1行に留めています。
+</p>
+</div>
+</div>
+<div id="outline-container-org3753d3e" class="outline-4">
+<h4 id="org3753d3e"><span class="section-number-4">3.6.2.</span> TODOワークフローの説明</h4>
+<div class="outline-text-4" id="text-3-6-2">
+<p>
+全体的な考え方はこうです。TODOアイテムをキャプチャし、優先度を割り当て、やるべきことの詳細を記録します。記録したら後日改めて取り組み、作業を開始したら状態を <code>IN-PROGRESS</code> に変更します。このとき、短いメモを書くよう促され（必須ではなく空欄でも可）、状態変化のタイムスタンプが記録されます。最終的に作業が完了したら、TODOを完了状態に設定します。この例での完了状態は <code>DONE~・~OBE~・~WONT-DO</code> です。しかし今は先走らず、まず設定を見ていきましょう。
+</p>
+</div>
+</div>
+<div id="outline-container-org46081f6" class="outline-4">
+<h4 id="org46081f6"><span class="section-number-4">3.6.3.</span> キャプチャテンプレート</h4>
+<div class="outline-text-4" id="text-3-6-3">
+<p>
+汎用TODOアイテムは、キャプチャテンプレートバッファから <code>g</code> でキャプチャします。すべてのTODOは <code>todos.org</code> ファイルの <code>General Tasks</code> 見出し下に保存されます。初期状態は <code>TODO~、初期優先度は ~B</code> に設定されています。加えて、このTODOが作成された日時を記録する <code>Created:</code> フィールドも追加しています。後でフィルタリングに使えますが、オプションのメタデータとして付けておくと便利です。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b6a0ff;">setq</span> org-capture-templates
+      '(    
+        (<span style="color: #79a8ff;">"g"</span> <span style="color: #79a8ff;">"&#27726;&#29992;TODO"</span>
+         entry (file+headline <span style="color: #79a8ff;">"~/org/todos.org"</span> <span style="color: #79a8ff;">"General Tasks"</span>)
+         <span style="color: #79a8ff;">"* TODO [#B] %?\n:Created: %T\n "</span>
+         <span style="color: #f78fe7;">:empty-lines</span> 0)
+      ))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7ca2e12" class="outline-4">
+<h4 id="org7ca2e12"><span class="section-number-4">3.6.4.</span> Org の状態</h4>
+<div class="outline-text-4" id="text-3-6-4">
+<p>
+デフォルトでは Org は <code>TODO</code> と <code>DONE</code> の2状態しかありませんが、実際にはもっと多くのニュアンスを捉えたいものです。ということで、今そうしましょう。以下は筆者が設定している状態です（プログラマー向けのものも含むため、すべてが当てはまるわけではありません）。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #989898;">;; </span><span style="color: #989898;">TODO &#12398;&#29366;&#24907;
+</span>(<span style="color: #b6a0ff;">setq</span> org-todo-keywords
+      '((sequence <span style="color: #79a8ff;">"TODO(t)"</span> <span style="color: #79a8ff;">"PLANNING(p)"</span> <span style="color: #79a8ff;">"IN-PROGRESS(i@/!)"</span> <span style="color: #79a8ff;">"VERIFYING(v!)"</span> <span style="color: #79a8ff;">"BLOCKED(b@)"</span>  <span style="color: #79a8ff;">"|"</span> <span style="color: #79a8ff;">"DONE(d!)"</span> <span style="color: #79a8ff;">"OBE(o@!)"</span> <span style="color: #79a8ff;">"WONT-DO(w@/!)"</span> )
+        ))
+</pre>
+</div>
+
+<p>
+8種類の状態を設定しています。最初の5つがアクティブな状態で、残りの3つが非アクティブ（完了）状態です。タスクは作成され、作業が始まり、最終的に結論に達するという流れになっています。作業中に確認が必要になったり（別の人からの確認待ちなど）、完全にブロックされたりすることもあります。最終的にはどこかの完了状態に至ります。理想は <code>DONE</code> で作業完了の記録を残すことですが、途中で優先度が下がった場合は <code>OBE</code> を使います。また、あらためて検討した結果、取り組まないことにした場合もあります。理由はさまざまですが——もはや関係なくなった、他の人の担当だった、単に気が変わった——いずれにせよ、記録を残しておきたいので削除はしません。そこで <code>WONT-DO</code> を使います。
+</p>
+
+<p>
+括弧内の追加文字が気になる方は、ドキュメントで詳しく確認できます。簡単に言うと、ショートカットキーの指定、メモの入力促し、タイムスタンプの記録を意味します。たとえば <code>IN-PROGRESS</code> に設定するとメモの入力が促されてタイムスタンプが記録されますが、~VERIFYING~ への遷移にはメモは不要と判断しています。同様に <code>DONE</code> はタイムスタンプのみですが、~OBE~ と <code>WONT-DO</code> は「なぜ完了できないか」の説明が求められます。
+</p>
+
+<p>
+ここまで設定を進めていると、筆者の例と見た目が違うことに気づくかもしれません。自分のファイルはシンプルな見た目なのに、例ではカラフルで洗練されているのはなぜか？それは、TODOの状態に独自の色を設定しているからです。以下を設定ファイルに追加して、お好みの色に調整してください。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #989898;">;; </span><span style="color: #989898;">TODO &#12398;&#33394;
+</span>(<span style="color: #b6a0ff;">setq</span> org-todo-keyword-faces
+      '(
+        (<span style="color: #79a8ff;">"TODO"</span> . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"GoldenRod"</span> <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"PLANNING"</span> . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"DeepPink"</span> <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"IN-PROGRESS"</span> . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"Cyan"</span> <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"VERIFYING"</span> . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"DarkOrange"</span> <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"BLOCKED"</span> . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"Red"</span> <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"DONE"</span> . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"LimeGreen"</span> <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"OBE"</span> . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"LimeGreen"</span> <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"WONT-DO"</span> . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"LimeGreen"</span> <span style="color: #f78fe7;">:weight</span> bold))
+        ))
+</pre>
+</div>
+
+<p>
+TODOの設定はここで完了です。設定を保存してリロードし、いろいろ試してみてください。色などを好みに合わせて調整しましょう。簡単な部分が終わったので、次はより複雑な設定に進みましょう。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org4278386" class="outline-3">
+<h3 id="org4278386"><span class="section-number-3">3.7.</span> 設定 #4 - プログラマー向けTODO</h3>
+<div class="outline-text-3" id="text-3-7">
+<p>
+この設定を独立したセクションとして設けたのは、プログラマーでない読者を混乱させたくないからです。前のセクションに含めようとも思いましたが、すでに十分長くなっていると感じたので分けました。以下は、プログラマーにとってのみ役立つ機能です。
+</p>
+</div>
+<div id="outline-container-org62912aa" class="outline-4">
+<h4 id="org62912aa"><span class="section-number-4">3.7.1.</span> バグの追跡</h4>
+<div class="outline-text-4" id="text-3-7-1">
+<p>
+筆者はすべての開発を Emacs で行います。言語を問わず、常に開いています。そのため、ソースコードをスキャンしていて「後で直したい」と思う箇所を見つけることがよくあります。比較的単純なものなら、コードにコメントを残しておくだけで済みます。しかし複雑なもの——新しいエッジケースを発見した、20分かけてやっと解読した難解なコードで3ヶ月後にまたゼロから読み解きたくない——といった場合には、バグの場所をキャプチャしてTODOアイテム内に保存できると非常に便利です。
+</p>
+</div>
+</div>
+<div id="outline-container-org776a632" class="outline-4">
+<h4 id="org776a632"><span class="section-number-4">3.7.2.</span> キャプチャテンプレート</h4>
+<div class="outline-text-4" id="text-3-7-2">
+<p>
+コード専用のTODOです。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b6a0ff;">setq</span> org-capture-templates
+      '(    
+        (<span style="color: #79a8ff;">"c"</span> <span style="color: #79a8ff;">"&#12467;&#12540;&#12489;TODO"</span>
+         entry (file+headline <span style="color: #79a8ff;">"~/org/todos.org"</span> <span style="color: #79a8ff;">"Code Related Tasks"</span>)
+         <span style="color: #79a8ff;">"* TODO [#B] %?\n:Created: %T\n%i\n%a\n&#35299;&#27770;&#31574;&#12398;&#25552;&#26696;: "</span>
+         <span style="color: #f78fe7;">:empty-lines</span> 0)
+        ))
+</pre>
+</div>
+
+<p>
+このキャプチャは、リンクを貼りたいコードの行にカーソルを置いた状態で実行する必要があります。コードTODOを作成すると、新しいTODOアイテムが生成されるとともに、そのTODOがコードの特定の行にリンクされます。リンクをたどれば、参照していた箇所にすぐ戻ることができます。
+</p>
+
+<p>
+もちろんこれはコードだけでなく、あらゆるテキストファイルで使えます。本を書いていて、後で書き直したい特定の段落にしおりを挟みたい、といった用途にもぴったりです。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org6640991" class="outline-3">
+<h3 id="org6640991"><span class="section-number-3">3.8.</span> 設定 #5 - 会議</h3>
+<div class="outline-text-3" id="text-3-8">
+<p>
+会議データのキャプチャには2つの側面があります。「スケジュール管理・参加者の把握」という側面と、「メモの記録・アクションアイテム・次の行動」という側面です。
+</p>
+
+<p>
+前者のスケジュール管理については、Microsoft の Outlook を使っています。Outlook は嫌いですが、みんなが使っています。会議のスケジュールはそこで管理され、メールとシステム通知でリマインダーが届き、会議時には Teams のリンクも提供してくれます。その機能はすでに存在し、会社全員が使っているので、今さら再現しようとする必要はありません。この一勝は Microsoft に譲りましょう。
+</p>
+
+<p>
+しかし後者、つまり会議のメモ管理は Org が真価を発揮する領域です。Org は <code>DEADLINE</code> や <code>SCHEDULED</code> タグをサポートしており、便利な使い方もありますが、筆者の実際のワークフローではあまり活躍していません。あらかじめスケジュールを立てることが少なく、それらの機能が活かせないのです。代わりに、同僚から「ちょっと20分いいですか」や上司から「方向性について話したい」といった突発的な会議が1日に何件もあります。これらの会議には非常に有益な情報や、後でやるべきアクションアイテムが含まれています。そのニーズを満たすために、TODOとタグを組み合わせて会議を確実に記録するキャプチャテンプレートを作成しました。
+</p>
+
+<p>
+以下は自分の会議の一部を示した概要です。読みやすくするために週単位でグループ化され、折りたたまれた状態で表示されています。週ごとのグループ化は過去の会議を振り返る際に便利なため、個人的にこの形式を好んでいます。
+</p>
+
+
+<div id="org88408fe" class="figure">
+<p><img src="images/meetings-by-week-screenshot.png" alt="meetings-by-week-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 4: </span>会議の週次ビュー（高レベル）</p>
+</div>
+
+<p>
+ここでは1段階展開した様子を示しています。各日の各会議のタイトルが確認できます。色のついた単語はタグで、詳しくは後述します。
+</p>
+
+
+<div id="orgbe248df" class="figure">
+<p><img src="images/meetings-by-day-overview-screenshot.png" alt="meetings-by-day-overview-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 5: </span>日ごとの会議一覧</p>
+</div>
+
+<p>
+最後に、木曜日の会議の全詳細が表示されています。内容は盛りだくさんです。メタデータの <code>LOGBOOK~、作成タイムスタンプ、会議の所要時間を示す ~CLOCK</code> 値、参加者、メモ、そしてアクションアイテム！
+</p>
+
+
+<div id="org3fa3783" class="figure">
+<p><img src="images/meeting-details-screenshot.png" alt="meeting-details-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 6: </span>会議の詳細</p>
+</div>
+
+<p>
+いつも通り、まずキャプチャテンプレートから見ていきましょう。
+</p>
+</div>
+<div id="outline-container-orgfed2cf4" class="outline-4">
+<h4 id="orgfed2cf4"><span class="section-number-4">3.8.1.</span> キャプチャテンプレート</h4>
+<div class="outline-text-4" id="text-3-8-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b6a0ff;">setq</span> org-capture-templates
+      '(    
+        (<span style="color: #79a8ff;">"m"</span> <span style="color: #79a8ff;">"&#20250;&#35696;"</span>
+         entry (file+datetree <span style="color: #79a8ff;">"~/org/meetings.org"</span>)
+         <span style="color: #79a8ff;">"* %? :meeting:%^g \n:Created: %T\n** &#21442;&#21152;&#32773;\n*** \n** &#12513;&#12514;\n** &#12450;&#12463;&#12471;&#12519;&#12531;&#12450;&#12452;&#12486;&#12512;\n*** TODO [#A] "</span>
+         <span style="color: #f78fe7;">:tree-type</span> week
+         <span style="color: #f78fe7;">:clock-in</span> t
+         <span style="color: #f78fe7;">:clock-resume</span> t
+         <span style="color: #f78fe7;">:empty-lines</span> 0)
+        ))
+</pre>
+</div>
+
+<p>
+これは今まで見た中でもっとも複雑なキャプチャテンプレートなので、1行ずつ見ていきましょう。~entry~ の値はファイルの保存構造を定義します。次の行は会議がどのように記録されるかのテンプレートで、~%T~ のような Org 特殊文字（タイムスタンプを生成する）も含まれています。この行には <code>:meeting:</code> タグ（後で使用）と、空のTODOが事前入力された <code>アクションアイテム</code> セクションも含まれています。
+</p>
+
+<p>
+キャプチャテンプレートを起動して「m」を押すと、ミニバッファに追加タグを入力するオプションが表示されます。タグを追加しなくても問題なく、後から追加することもできますが、ここで最初のタグを付けることもできます。
+</p>
+
+
+<div id="orgc04aa4e" class="figure">
+<p><img src="images/meeting-capture-screenshot.png" alt="meeting-capture-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 7: </span>会議のキャプチャ</p>
+</div>
+
+<p>
+この例では <code>:james:</code> タグを追加しました（この会議は全部自分に関わるものなので）。タグを選んでEnterキーを押すと、次のような状態になります。
+</p>
+
+
+<div id="org6bb2194" class="figure">
+<p><img src="images/meeting-with-tags-screenshot.png" alt="meeting-with-tags-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 8: </span>入力準備完了の会議テンプレート</p>
+</div>
+
+<p>
+見通しが立ってきました。~*~ の隣の空白部分が会議のタイトルを入れる場所です。タグが2つ（meeting と james）、時間記録用の <code>LOGBOOK</code> エントリー、カスタムメタデータ ~:Created:~（アジェンダのセクションで詳述）、参加者リスト、メモ欄、そしてアクションアイテム欄があります。
+</p>
+
+<p>
+会議が始まり、キャプチャテンプレートを起動して情報を入力している状態を実際に入力した例で確認してみましょう。
+</p>
+
+
+<div id="orgabbf8b0" class="figure">
+<p><img src="images/meeting-in-progress-screenshot.png" alt="meeting-in-progress-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 9: </span>進行中の会議</p>
+</div>
+
+<p>
+キャプチャが終わってファイルに保存されると、会議の所要時間が記録されます。キャプチャテンプレートが起動した瞬間にクロックが始まり、テンプレートを閉じると停止します。これにより、過去の会議を振り返って同僚に奪われた時間を確認できます。
+</p>
+
+<p>
+重要なポイントとして、タグは会議のベースレベルに設定され、その会議に属するすべての要素がそのタグを継承します。したがって、作成したTODOアイテムは <code>:meeting:</code> と <code>:james:</code> の両タグを継承します。~アクションアイテム~ 配下のTODOに追加のタグを付ければ、そのTODOは3つのタグを持ち、会議自体は2つのタグのままになります。タグについては次のセクションで詳しく説明します。
+</p>
+</div>
+</div>
+<div id="outline-container-org8d690a1" class="outline-4">
+<h4 id="org8d690a1"><span class="section-number-4">3.8.2.</span> クロックレポート</h4>
+<div class="outline-text-4" id="text-3-8-2">
+<p>
+Org Mode の非常に便利な機能のひとつが、タスクのクロックイン・クロックアウトによる時間追跡です。会議のキャプチャテンプレートでは <code>clock-in</code> を true に設定しているため、会議が作成されるとクロックが始まり、キャプチャテンプレートを閉じた（会議が終わった）時点で停止します。このメタデータは会議の <code>:LOGBOOK:</code> セクションに保存されます。この情報を使って、~org-clock-report~ と <code>org-clock-display</code> の2つのコマンドで時間を視覚的に確認できます。
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="orgf7eccda"></a>クロックレポート<br />
+<div class="outline-text-5" id="text-3-8-2-1">
+<p>
+クロックレポートは <code>org-clock-report</code> で生成され、ファイルに挿入されます。この値は動的ではなく、コマンドが実行された時点のものが記録されます。過去のイベントの時間サマリーを表示するのに便利で、会議に費やした時間を一目で確認できます。請求や프로젝트への時間配分を追跡する必要がある場合に特に役立ちます。以下は3週間分の会議のクロックレポートの例です。
+</p>
+
+
+<div id="org409f553" class="figure">
+<p><img src="images/meetings-clock-report-screenshot.png" alt="meetings-clock-report-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 10: </span>クロックレポート</p>
+</div>
+</div>
+</li>
+<li><a id="org3070f8b"></a>クロック表示<br />
+<div class="outline-text-5" id="text-3-8-2-2">
+<p>
+クロック表示は、さまざまなエントリーに費やした時間をオーバーレイで素早く確認するもので、~org-clock-display~ で表示できます。
+</p>
+
+
+<div id="org40c3b5e" class="figure">
+<p><img src="images/meeting-clock-time-overview-screenshot.png" alt="meeting-clock-time-overview-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 11: </span>クロック概要</p>
+</div>
+
+<p>
+さらに詳細を確認すると：
+</p>
+
+
+<div id="org1fe5e07" class="figure">
+<p><img src="images/meeting-detailed-clock-screenshot.png" alt="meeting-detailed-clock-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 12: </span>詳細クロックビュー</p>
+</div>
+
+<p>
+さまざまな会議にどれだけの時間が費やされているかを手軽に把握できます。
+</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org34d5b78" class="outline-2">
+<h2 id="org34d5b78"><span class="section-number-2">4.</span> タグ</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+アジェンダの説明に進む前に、タグについて少し掘り下げておく必要があります。何度か言及してきましたが、設定方法と使い方について詳しく説明します。タグを作りすぎると効果的に使えなくなり、少なすぎるとアジェンダでの活用が半減します。効果的なタグ運用のために筆者が見つけたガイドラインを紹介します。
+</p>
+</div>
+<div id="outline-container-orge061712" class="outline-3">
+<h3 id="orge061712"><span class="section-number-3">4.1.</span> タグをグループ化する</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+意味のあるタグのグループを作りましょう。たとえば、家族の各メンバーが週にこなすべき家事を追跡するなら、各人の名前でタグを作ります。レシピを管理するなら、料理の種類（ドイツ料理・フランス料理・ベトナム料理など）でタグを作ります。
+</p>
+
+<p>
+さらに、グループ内で一度に1つのタグしか使えない排他グループも作れます。レシピの例で言えば（朝食、食事、デザート、飲み物）というグループを作れば、そのレシピはこれらのうち一つだけに分類されます。使わなくても構いませんが、使う場合は一度に一つだけです。
+</p>
+</div>
+</div>
+<div id="outline-container-org7182446" class="outline-3">
+<h3 id="org7182446"><span class="section-number-3">4.2.</span> 小さく始める</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+最初から20個のタグを作って要らないものを削るより、少数から始めて徐々に増やす方が得策です。まず大まかなグループから始め、自然に細分化が必要な箇所が見えてきたら追加しましょう。タグを付けること自体が目的になってはいけません。タグは最終的に絞り込みや検索に使うものです。使う予定のないタグを作っても意味がありません。
+</p>
+
+<p>
+この料理の例をさらに引っ張ると、~:直火が必要:~ というタグも作れますが、フランベが必要なレシピを絞り込む予定がないなら、作っても仕方ないでしょう。
+</p>
+</div>
+</div>
+<div id="outline-container-org6099bb2" class="outline-3">
+<h3 id="org6099bb2"><span class="section-number-3">4.3.</span> 超具体的なタグより複数タグの組み合わせが良い</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+過度に具体的なタグ（使っていくうちに窮屈になる）を使うより、タグを組み合わせて詳細な注釈を作る方法を考えましょう。メールから作成するTODOなら、~:ケビンとの将来のプロジェクト:~ ではなく <code>:将来のプロジェクト:ケビン:</code> と使いましょう。当然に思えるかもしれませんが、Org Mode を使い始めたばかりの頃は、何が必要かよくわからないまま何でも試してしまい、気づくとどんなタグが機能するかを壁に投げて確かめる状態になりがちです。
+</p>
+</div>
+</div>
+<div id="outline-container-org8ee1566" class="outline-3">
+<h3 id="org8ee1566"><span class="section-number-3">4.4.</span> タグの定義</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+このドキュメントのワークフロー例で使っているタグは以下の通りです。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #989898;">;; </span><span style="color: #989898;">&#12479;&#12464;
+</span>(<span style="color: #b6a0ff;">setq</span> org-tag-alist '(
+                      <span style="color: #989898;">;; </span><span style="color: #989898;">&#12481;&#12465;&#12483;&#12488;&#12398;&#31278;&#39006;
+</span>                      (<span style="color: #f78fe7;">:startgroup</span> . nil)
+                      (<span style="color: #79a8ff;">"@bug"</span> . ?b)
+                      (<span style="color: #79a8ff;">"@feature"</span> . ?u)
+                      (<span style="color: #79a8ff;">"@spike"</span> . ?j)                      
+                      (<span style="color: #f78fe7;">:endgroup</span> . nil)
+
+                      <span style="color: #989898;">;; </span><span style="color: #989898;">&#12481;&#12465;&#12483;&#12488;&#12501;&#12521;&#12464;
+</span>                      (<span style="color: #79a8ff;">"@write_future_ticket"</span> . ?w)
+                      (<span style="color: #79a8ff;">"@emergency"</span> . ?e)
+                      (<span style="color: #79a8ff;">"@research"</span> . ?r)
+
+                      <span style="color: #989898;">;; </span><span style="color: #989898;">&#20250;&#35696;&#12398;&#31278;&#39006;
+</span>                      (<span style="color: #f78fe7;">:startgroup</span> . nil)
+                      (<span style="color: #79a8ff;">"big_sprint_review"</span> . ?i)
+                      (<span style="color: #79a8ff;">"cents_sprint_retro"</span> . ?n)
+                      (<span style="color: #79a8ff;">"dsu"</span> . ?d)
+                      (<span style="color: #79a8ff;">"grooming"</span> . ?g)
+                      (<span style="color: #79a8ff;">"sprint_retro"</span> . ?s)
+                      (<span style="color: #f78fe7;">:endgroup</span> . nil)
+
+                      <span style="color: #989898;">;; </span><span style="color: #989898;">&#12467;&#12540;&#12489;TODO&#12398;&#12479;&#12464;
+</span>                      (<span style="color: #79a8ff;">"QA"</span> . ?q)
+                      (<span style="color: #79a8ff;">"backend"</span> . ?k)
+                      (<span style="color: #79a8ff;">"broken_code"</span> . ?c)
+                      (<span style="color: #79a8ff;">"frontend"</span> . ?f)
+
+                      <span style="color: #989898;">;; </span><span style="color: #989898;">&#29305;&#27530;&#12479;&#12464;
+</span>                      (<span style="color: #79a8ff;">"CRITICAL"</span> . ?x)
+                      (<span style="color: #79a8ff;">"obstacle"</span> . ?o)
+
+                      <span style="color: #989898;">;; </span><span style="color: #989898;">&#20250;&#35696;&#12479;&#12464;
+</span>                      (<span style="color: #79a8ff;">"HR"</span> . ?h)
+                      (<span style="color: #79a8ff;">"general"</span> . ?l)
+                      (<span style="color: #79a8ff;">"meeting"</span> . ?m)
+                      (<span style="color: #79a8ff;">"misc"</span> . ?z)
+                      (<span style="color: #79a8ff;">"planning"</span> . ?p)
+
+                      <span style="color: #989898;">;; </span><span style="color: #989898;">&#20316;&#26989;&#12525;&#12464;&#12479;&#12464;
+</span>                      (<span style="color: #79a8ff;">"accomplishment"</span> . ?a)
+                      ))
+</pre>
+</div>
+
+<p>
+チケットの種類と会議の種類は排他グループになっていることに注意してください。チケットはバグ・機能・スパイクのいずれか一つです。同様に会議も主要な種類が一つだけです。ただし残りのタグは自由に組み合わせられます。会議には <code>:meeting:backend:</code> とタグを付けてバックエンドに関する会議であることを示し、その中で <code>:CRITICAL:@bug:</code> とタグの付いたTODOを作って緊急度の高いバグを記録する、といった使い方ができます。なお、タグ内の「@」は Org Mode では特別な意味を持たず、個人的な覚え書きとして使っているものです。
+</p>
+</div>
+</div>
+<div id="outline-container-orge00e316" class="outline-3">
+<h3 id="orge00e316"><span class="section-number-3">4.5.</span> タグのカラー化</h3>
+<div class="outline-text-3" id="text-4-5">
+<p>
+やる価値があることなら、綺麗にする価値もある——これが筆者の少し変わったモットーです。タグをカッコよく彩りましょう！
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #989898;">;; </span><span style="color: #989898;">&#12479;&#12464;&#12398;&#33394;
+</span>(<span style="color: #b6a0ff;">setq</span> org-tag-faces
+      '(
+        (<span style="color: #79a8ff;">"planning"</span>  . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"mediumPurple1"</span> <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"backend"</span>   . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"royalblue1"</span>    <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"frontend"</span>  . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"forest green"</span>  <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"QA"</span>        . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"sienna"</span>        <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"meeting"</span>   . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"yellow1"</span>       <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"CRITICAL"</span>  . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"red1"</span>          <span style="color: #f78fe7;">:weight</span> bold))
+        )
+      )
+</pre>
+</div>
+
+<p>
+これによりタグに色と太さが加わります。個人的には、色のついたタグは一目で情報を把握する助けになり、単調なTODOを格段に見やすくしてくれると感じています。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org7fb21c6" class="outline-2">
+<h2 id="org7fb21c6"><span class="section-number-2">5.</span> 基本的なアジェンダの使い方</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+この沼に足を踏み入れる前に——そして確かにこれは別格の沼です——厳密に言えばアジェンダビューは <i>必須ではない</i> ということをお伝えしておきます。使えば最終的に生活が楽になりますが、最初から使わなくても問題ありません。これだけの内容を一気に習得するのは大変ですし、準備ができてから戻ってきても遅くはありません。
+</p>
+
+<p>
+それを踏まえて、アジェンダビューの核となる部分を見ていきましょう。アジェンダをもっとも単純な形で使うと、主に2つの用途になります。日付ビューでタイムスタンプ付きのアイテムを表示すること、そしてタスクビューでTODOアイテムを表示することです。その他のすべての機能・フィルター・拡張は、この2つの核の上に積み上げられたものです。いくつか例を見てみましょう。
+</p>
+</div>
+<div id="outline-container-orgc58ef8b" class="outline-3">
+<h3 id="orgc58ef8b"><span class="section-number-3">5.1.</span> アジェンダ週次ビュー</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+<code>C-c a</code> でアジェンダ選択ダイアログを開き、リストの最初の選択肢である「今週・今日のアジェンダ」を <code>a</code> で選ぶと表示される基本ビューです。
+</p>
+
+
+<div id="org23aae35" class="figure">
+<p><img src="images/agenda-basic-screenshot.png" alt="agenda-basic-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 13: </span>週次アジェンダの基本ビュー</p>
+</div>
+
+<p>
+その週に多くの会議があったことがわかります。ちなみに、これらの会議とTODOがビューに表示されるのは、それぞれに <code>:Created:</code> フィールドにタイムスタンプがあるからです。設定 #5 に戻って確認してみてください。重要な点として、タイムスタンプのあるものだけがここに表示されます。~deadline~ や <code>scheduled</code> フィールドを使っても同様に機能します。ここで引っかかりやすいポイントなので覚えておきましょう。
+</p>
+
+<p>
+各エントリーの左側にはラベルがあります。そのエントリーが見つかったファイルの名前です。カテゴリー名を設定すれば置き換えられますが、設定していないのでファイル名がそのまま表示されています。右側にはタグが表示されており、後ほど役立ちます。次にTODOビューを見てみましょう。
+</p>
+</div>
+</div>
+<div id="outline-container-org81b064b" class="outline-3">
+<h3 id="org81b064b"><span class="section-number-3">5.2.</span> アジェンダTODOビュー</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+アジェンダで <code>すべてのTODOエントリーを一覧表示</code> を選択すると、次のような表示になります。
+</p>
+
+
+<div id="orgbdc922d" class="figure">
+<p><img src="images/agenda-todo-view-screenshot.png" alt="agenda-todo-view-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 14: </span>TODOビュー</p>
+</div>
+
+<p>
+すべてのTODOが優先度順、次にファイル（またはカテゴリー）順で表示されます。多くのTODOには複数のタグが付いています。デフォルトビューはある程度の整理を試みていますが、TODOが増えると読みにくくなります。一瞬で把握できる情報は以下の通りです。
+</p>
+
+<ul class="org-ul">
+<li>TODOの出所ファイル（meetings、todos、tickets）</li>
+<li>TODOの状態（~TODO~・~IN-PROGRESS~・~PLANNING~・~VERIFYING~・~BLOCKED~）</li>
+<li>優先度（~A~・~B~・~C~）</li>
+<li>TODOのタイトル</li>
+<li>関連するタグ（planning・backend・CRITICAL など）</li>
+</ul>
+
+<p>
+情報量が多いです。さまざまな方法でフィルタリングできますが（詳細はマニュアルを参照——説明しきれない量があります）、それでも圧倒されることがあります。もう少し読みやすくしましょう。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org860cddb" class="outline-2">
+<h2 id="org860cddb"><span class="section-number-2">6.</span> 拡張アジェンダ #1</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+次のビューは <a href="https://github.com/aaronbieber/dotfiles/blob/master/configs/emacs.d/lisp/init-org.el">Aaron Bieber</a> のものを参考にして改変したバージョンです。なぜ彼の Github の設定ファイルにたどり着いたか覚えていませんが、素晴らしい内容で、ぜひ一度確認することをおすすめします。Aaron、もしこれを偶然読んでいたら——あなたは最高です。インスピレーションをありがとう。筆者のバージョンはこんな感じです。
+</p>
+</div>
+<div id="outline-container-orgcdea517" class="outline-3">
+<h3 id="orgcdea517"><span class="section-number-3">6.1.</span> アジェンダ拡張ビュー</h3>
+<div class="outline-text-3" id="text-6-1">
+
+<div id="orgb012101" class="figure">
+<p><img src="images/enhanced-agenda-view-screenshot.png" alt="enhanced-agenda-view-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 15: </span>拡張アジェンダビュー</p>
+</div>
+
+<p>
+一目でかなり読みやすくなっているのがわかります。最高優先度のアイテムが上に来て、週次アジェンダビューも組み込まれており、全体的に格段に見やすいビューになっています。これを支えるコードを見てみましょう。
+</p>
+</div>
+</div>
+<div id="outline-container-org447f699" class="outline-3">
+<h3 id="org447f699"><span class="section-number-3">6.2.</span> アジェンダカスタムコマンド</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+このビューを追加するにはいくつかの部品が必要です。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #989898;">;; </span><span style="color: #989898;">&#12450;&#12472;&#12455;&#12531;&#12480;&#12499;&#12517;&#12540; "d"
+</span>(<span style="color: #b6a0ff;">defun</span> <span style="color: #feacd0;">air-org-skip-subtree-if-priority</span> (priority)
+  <span style="color: #9ac8e0;">"&#25351;&#23450;&#12375;&#12383;&#20778;&#20808;&#24230; PRIORITY &#12434;&#25345;&#12388;&#12469;&#12502;&#12484;&#12522;&#12540;&#12434;&#12450;&#12472;&#12455;&#12531;&#12480;&#12391;&#12473;&#12461;&#12483;&#12503;&#12377;&#12427;&#12290;
+
+  PRIORITY &#12395;&#12399; ?A&#12289;?B&#12289;?C &#12398;&#12356;&#12378;&#12428;&#12363;&#12398;&#25991;&#23383;&#12434;&#25351;&#23450;&#12377;&#12427;&#12290;"</span>
+  (<span style="color: #b6a0ff;">let</span> ((subtree-end (<span style="color: #b6a0ff;">save-excursion</span> (org-end-of-subtree t)))
+        (pri-value (* 1000 (- org-lowest-priority priority)))
+        (pri-current (org-get-priority (thing-at-point 'line t))))
+    (<span style="color: #b6a0ff;">if</span> (= pri-value pri-current)
+        subtree-end
+      nil)))
+
+(<span style="color: #b6a0ff;">setq</span> org-agenda-skip-deadline-if-done t)
+
+(<span style="color: #b6a0ff;">setq</span> org-agenda-custom-commands
+      '(
+        <span style="color: #989898;">;; </span><span style="color: #989898;">&#26085;&#27425;&#12450;&#12472;&#12455;&#12531;&#12480; &amp; TODO
+</span>        (<span style="color: #79a8ff;">"d"</span> <span style="color: #79a8ff;">"&#26085;&#27425;&#12450;&#12472;&#12455;&#12531;&#12480;&#12392;&#12377;&#12409;&#12390;&#12398;TODO"</span>
+
+         <span style="color: #989898;">;; </span><span style="color: #989898;">&#20778;&#20808;&#24230;A&#12398;&#12450;&#12452;&#12486;&#12512;&#12434;&#34920;&#31034;
+</span>         ((tags <span style="color: #79a8ff;">"PRIORITY=\"A\""</span>
+                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                 (org-agenda-overriding-header <span style="color: #79a8ff;">"&#39640;&#20778;&#20808;&#24230;&#12398;&#26410;&#23436;&#20102;&#12479;&#12473;&#12463;:"</span>)))
+
+          <span style="color: #989898;">;; </span><span style="color: #989898;">&#12459;&#12524;&#12531;&#12480;&#12540;&#12499;&#12517;&#12540;&#12391;7&#26085;&#20998;&#12434;&#34920;&#31034;
+</span>          (agenda <span style="color: #79a8ff;">""</span> ((org-agenda-span 7)))
+
+          <span style="color: #989898;">;; </span><span style="color: #989898;">&#20778;&#20808;&#24230;B&#12398;&#12450;&#12452;&#12486;&#12512;&#12434;&#34920;&#31034;&#65288;&#23455;&#36074;&#12399;A&#12539;C&#20197;&#22806;&#12398;&#12377;&#12409;&#12390;&#65289;
+</span>          (alltodo <span style="color: #79a8ff;">""</span>
+                   ((org-agenda-skip-function '(or (air-org-skip-subtree-if-priority ?A)
+                                                   (air-org-skip-subtree-if-priority ?C)
+                                                   (org-agenda-skip-if nil '(scheduled deadline))))
+                    (org-agenda-overriding-header <span style="color: #79a8ff;">"&#36890;&#24120;&#20778;&#20808;&#24230;&#12398;&#12479;&#12473;&#12463;:"</span>)))
+
+          <span style="color: #989898;">;; </span><span style="color: #989898;">&#20778;&#20808;&#24230;C&#12398;&#12450;&#12452;&#12486;&#12512;&#12434;&#34920;&#31034;
+</span>          (tags <span style="color: #79a8ff;">"PRIORITY=\"C\""</span>
+                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                 (org-agenda-overriding-header <span style="color: #79a8ff;">"&#20302;&#20778;&#20808;&#24230;&#12398;&#26410;&#23436;&#20102;&#12479;&#12473;&#12463;:"</span>)))
+          )
+
+         <span style="color: #989898;">;; </span><span style="color: #989898;">&#22311;&#32302;&#34920;&#31034;&#12375;&#12394;&#12356;&#65288;&#22909;&#12415;&#12395;&#24540;&#12376;&#12390;&#22793;&#26356;&#65289;
+</span>         ((org-agenda-compact-blocks nil)))
+        ))          
+</pre>
+</div>
+
+<p>
+アジェンダ選択ダイアログに <code>日次アジェンダとすべてのTODO</code> というオプションが追加され、~d~ で選択できるようになります。デフォルトビューよりずっと見やすく、しばらくの間はこれを主力ビューとして使っていました。ただし、リストが長くなると特定のアイテムが埋もれてしまうことがあります。次の解決策も見てみましょう。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgeda6669" class="outline-2">
+<h2 id="orgeda6669"><span class="section-number-2">7.</span> 拡張アジェンダ #2</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+次のアジェンダ設定には <a href="https://github.com/alphapapa/org-super-agenda">Org Super Agenda</a> というパッケージを使います。Org Mode 入門者にはオーバースペックかもしれません。準備できていないと感じるなら、遠慮なく後回しにしてください。ただし、デフォルト設定を超えた拡張を望むようになったとき、このパッケージは素晴らしい選択肢です。先ほどのビューが Super Agenda でどう変わるか見てみましょう。
+</p>
+
+
+<div id="orgdca6d56" class="figure">
+<p><img src="images/agenda-super-view-screenshot.png" alt="agenda-super-view-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 16: </span>アジェンダスーパービュー</p>
+</div>
+
+<p>
+なんという変わりようでしょう！アイテムが論理的なグループに整理され、タグで表示が煩雑になることもなく、優先度だけで絞り込むよりもグループ化が自然に感じられます。これが何の魔法かと言うと、Super Agenda の効果です。上記リンクで詳細ドキュメントを読めますが、要点はこうです。フィルターを設定すると、Super Agenda は定義した順にTODOアイテムに適用していきます。たとえばCRITICALタスクを最初のバケツに絞り込む設定をした場合、そのタスクが後のフィルター（要調査・ブロッカーなど）にも該当するとしても、最初のバケツにのみ表示されます。~:CRITICAL:~ タグを外せば下のバケツに落ちていきます。最後に、どのフィルターにも一致しないTODOがまとめて表示されます。フィルターに該当するTODOがなければ、そのバケツは表示されません。「観たい映画」バケツが表示されないのは、今のところ気になる映画を消化し終えているからです。Marvel が新作を公開すれば、そのバケツが復活します。簡単に聞こえますか？……実際、仕組みがわかってしまえば、かなりシンプルです。設定ファイルを見てみましょう。
+</p>
+</div>
+<div id="outline-container-orgcceea66" class="outline-3">
+<h3 id="orgcceea66"><span class="section-number-3">7.1.</span> アジェンダカスタムコマンド</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+必要な部品はこちらです。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b6a0ff;">setq</span> org-agenda-custom-commands
+      '(
+        <span style="color: #989898;">;; </span><span style="color: #989898;">James's &#12473;&#12540;&#12497;&#12540;&#12499;&#12517;&#12540;
+</span>        (<span style="color: #79a8ff;">"j"</span> <span style="color: #79a8ff;">"James's &#12473;&#12540;&#12497;&#12540;&#12499;&#12517;&#12540;"</span>
+         (
+          (agenda <span style="color: #79a8ff;">""</span>
+                  (
+                   (org-agenda-remove-tags t)                                       
+                   (org-agenda-span 7)
+                   )
+                  )
+
+          (alltodo <span style="color: #79a8ff;">""</span>
+                   (
+                    <span style="color: #989898;">;; </span><span style="color: #989898;">&#12479;&#12464;&#12434;&#38750;&#34920;&#31034;&#12395;&#12375;&#12390;&#12499;&#12517;&#12540;&#12434;&#12377;&#12387;&#12365;&#12426;&#12373;&#12379;&#12427;
+</span>                    (org-agenda-remove-tags t)
+                    (org-agenda-prefix-format <span style="color: #79a8ff;">"  %t  %s"</span>)                    
+                    (org-agenda-overriding-header <span style="color: #79a8ff;">"&#29694;&#22312;&#12398;&#29366;&#27841;"</span>)
+
+                    <span style="color: #989898;">;; </span><span style="color: #989898;">&#12473;&#12540;&#12497;&#12540;&#12450;&#12472;&#12455;&#12531;&#12480;&#12398;&#12464;&#12523;&#12540;&#12503;&#23450;&#32681;&#65288;&#38918;&#30058;&#36890;&#12426;&#12395;&#20966;&#29702;&#12373;&#12428;&#12427;&#65289;
+</span>                    (org-super-agenda-groups
+                     '(
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">CRITICAL &#12479;&#12464;&#12391;&#12501;&#12451;&#12523;&#12479;&#12522;&#12531;&#12464;
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#32202;&#24613;&#12479;&#12473;&#12463;"</span>
+                              <span style="color: #f78fe7;">:tag</span> <span style="color: #79a8ff;">"CRITICAL"</span>
+                              <span style="color: #f78fe7;">:order</span> 0
+                              )
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">IN-PROGRESS &#29366;&#24907;&#12391;&#12501;&#12451;&#12523;&#12479;&#12522;&#12531;&#12464;
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#29694;&#22312;&#20316;&#26989;&#20013;"</span>
+                              <span style="color: #f78fe7;">:todo</span> <span style="color: #79a8ff;">"IN-PROGRESS"</span>
+                              <span style="color: #f78fe7;">:order</span> 1
+                              )
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">PLANNING &#29366;&#24907;&#12391;&#12501;&#12451;&#12523;&#12479;&#12522;&#12531;&#12464;
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#27425;&#12398;&#12473;&#12486;&#12483;&#12503;&#12434;&#35336;&#30011;&#20013;"</span>
+                              <span style="color: #f78fe7;">:todo</span> <span style="color: #79a8ff;">"PLANNING"</span>
+                              <span style="color: #f78fe7;">:order</span> 2
+                              )
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">BLOCKED &#29366;&#24907;&#12414;&#12383;&#12399; obstacle &#12479;&#12464;&#12391;&#12501;&#12451;&#12523;&#12479;&#12522;&#12531;&#12464;
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#21839;&#38988;&#12539;&#12502;&#12525;&#12483;&#12459;&#12540;"</span>
+                              <span style="color: #f78fe7;">:todo</span> <span style="color: #79a8ff;">"BLOCKED"</span>
+                              <span style="color: #f78fe7;">:tag</span> <span style="color: #79a8ff;">"obstacle"</span>                              
+                              <span style="color: #f78fe7;">:order</span> 3
+                              )
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">@write_future_ticket &#12479;&#12464;&#12391;&#12501;&#12451;&#12523;&#12479;&#12522;&#12531;&#12464;
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#20316;&#25104;&#20104;&#23450;&#12398;&#12481;&#12465;&#12483;&#12488;"</span>
+                              <span style="color: #f78fe7;">:tag</span> <span style="color: #79a8ff;">"@write_future_ticket"</span>
+                              <span style="color: #f78fe7;">:order</span> 4
+                              )
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">@research &#12479;&#12464;&#12391;&#12501;&#12451;&#12523;&#12479;&#12522;&#12531;&#12464;
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#35201;&#35519;&#26619;"</span>
+                              <span style="color: #f78fe7;">:tag</span> <span style="color: #79a8ff;">"@research"</span>
+                              <span style="color: #f78fe7;">:order</span> 7
+                              )
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">meeting &#12479;&#12464;&#12363;&#12388;&#20778;&#20808;&#24230;A&#65288;&#20250;&#35696;&#12398;TODO&#12398;&#12415;&#34920;&#31034;&#65289;
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#20250;&#35696;&#12450;&#12463;&#12471;&#12519;&#12531;&#12450;&#12452;&#12486;&#12512;"</span>
+                              <span style="color: #f78fe7;">:and</span> (<span style="color: #f78fe7;">:tag</span> <span style="color: #79a8ff;">"meeting"</span> <span style="color: #f78fe7;">:priority</span> <span style="color: #79a8ff;">"A"</span>)
+                              <span style="color: #f78fe7;">:order</span> 8
+                              )
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">TODO &#29366;&#24907;&#12363;&#12388;&#20778;&#20808;&#24230;A &#12363;&#12388; meeting &#12479;&#12464;&#12394;&#12375;
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#12381;&#12398;&#20182;&#12398;&#37325;&#35201;&#12450;&#12452;&#12486;&#12512;"</span>
+                              <span style="color: #f78fe7;">:and</span> (<span style="color: #f78fe7;">:todo</span> <span style="color: #79a8ff;">"TODO"</span> <span style="color: #f78fe7;">:priority</span> <span style="color: #79a8ff;">"A"</span> <span style="color: #f78fe7;">:not</span> (<span style="color: #f78fe7;">:tag</span> <span style="color: #79a8ff;">"meeting"</span>))
+                              <span style="color: #f78fe7;">:order</span> 9
+                              )
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">TODO &#29366;&#24907;&#12363;&#12388;&#20778;&#20808;&#24230;B
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#19968;&#33324;&#12496;&#12483;&#12463;&#12525;&#12464;"</span>
+                              <span style="color: #f78fe7;">:and</span> (<span style="color: #f78fe7;">:todo</span> <span style="color: #79a8ff;">"TODO"</span> <span style="color: #f78fe7;">:priority</span> <span style="color: #79a8ff;">"B"</span>)
+                              <span style="color: #f78fe7;">:order</span> 10
+                              )
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">&#20778;&#20808;&#24230;C&#20197;&#19979;&#65288;&#23558;&#26469;&#12398;&#12373;&#12425;&#12395;&#20302;&#12356;&#20778;&#20808;&#24230;&#12418;&#12469;&#12509;&#12540;&#12488;&#65289;
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#38750;&#32202;&#24613;"</span>
+                              <span style="color: #f78fe7;">:priority&lt;=</span> <span style="color: #79a8ff;">"C"</span>
+                              <span style="color: #f78fe7;">:order</span> 11
+                              )
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">VERIFYING &#29366;&#24907;&#12391;&#12501;&#12451;&#12523;&#12479;&#12522;&#12531;&#12464;
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#29694;&#22312;&#30906;&#35469;&#20013;"</span>
+                              <span style="color: #f78fe7;">:todo</span> <span style="color: #79a8ff;">"VERIFYING"</span>
+                              <span style="color: #f78fe7;">:order</span> 20
+                              )
+                       )
+                     )
+                    )
+                   )
+          ))
+        ))
+</pre>
+</div>
+
+<p>
+これは、求めるものを正確に得るためにフィルターをさまざまに組み合わせる方法の好例です。さらなる改良のために Org Super Agenda のドキュメントも確認することをおすすめします。非常に洗練されたツールです。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org6f9d6da" class="outline-2">
+<h2 id="org6f9d6da"><span class="section-number-2">8.</span> おわりに</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+このドキュメントが何かのお役に立てれば幸いです。Org Mode の習得は筆者にとって実りある経験でした。あなたにとっても同様であることを願っています。Emacs ユーザーの仲間よ、幸運を！
+</p>
+
+<p>
+なお、このドキュメント全体が Org Mode で書かれ、Markdown にエクスポートされています。十分な努力さえあれば、Emacs はほぼ何にでも使えることの証明でもあります。
+</p>
+</div>
+</div>
+<div id="outline-container-org253b085" class="outline-2">
+<h2 id="org253b085"><span class="section-number-2">9.</span> 美しき悪夢、Org Mode</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+このドキュメントは、Org Mode 入門者向けのガイドです。生産的でありながら理解しやすい初期設定を、ひとつひとつ丁寧に作り上げていきます。これは、筆者が Org Mode を学び始めたときに欲しかったガイドです。ユーザーのワークフロー・それを支える Org Mode の機能・実際の画面スクリーンショット・そして設定コード、これらをひとつにまとめた解説が必要だと感じていました。このガイドが、あなたの Org Mode 習得の旅に役立つことを願っています。
+</p>
+</div>
+<div id="outline-container-orgc56c7ea" class="outline-3">
+<h3 id="orgc56c7ea"><span class="section-number-3">9.1.</span> Org Mode の習得がこれほど難しい理由</h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+Org Mode の学習が困難なのは、その複雑さに圧倒されやすいからです。Org Mode に関する情報を調べてみると、多くの場合、全体像が一枚岩として提示されており、どこから手をつければいいのかまったくわかりません。入門ガイドの多くは基本的な機能を説明したあと、熟練ユーザーによる壮大で複雑なカスタム設定を紹介します。初心者から上級者へと至る道筋は示されず、「とにかく触り続ければわかる」といった曖昧なアドバイスとありきたりな決まり文句だけが残ります。
+</p>
+
+<p>
+はっきり言います。そんなアドバイスは無意味です。
+</p>
+
+<p>
+他のツールであれば、セットアップウィザードやサンプル設定、入門チュートリアルが用意されているものです。しかし Org Mode は、ユーザー自身が理想のワークフローを構築するためのオープンエンドなフレームワークとして設計されています。この点においては、Org Mode を Emacs の中のプログラミング言語だと考えると理解しやすいかもしれません。導入の難しさも、そう考えれば納得がいきます。プログラマーでなければ（しかも Lisp の経験がなければ）、Org Mode の学習曲線は非常に険しいものになるでしょう。
+</p>
+</div>
+</div>
+<div id="outline-container-org7334a9f" class="outline-3">
+<h3 id="org7334a9f"><span class="section-number-3">9.2.</span> このガイドの使い方</h3>
+<div class="outline-text-3" id="text-9-2">
+<p>
+Org Mode 入門者には、まず「ワークフロー」のセクションを読むことを強くおすすめします。自分のニーズが見えてきたら、各種設定を読み進めてください。その段階で、コードを自分の設定ファイルに書き込み、実際に Org Mode を使ってみることをおすすめします。どのように動くかを観察し、自分に合うものを感覚として掴んでいきましょう。基本をしっかり押さえたら、「タグ」と「アジェンダ」のセクションに戻ってきてください。
+</p>
+
+<p>
+内容は盛りだくさんですが、これでも Org Mode が持つ機能のほんの一部にすぎません。焦らず、少しずつ進んでいきましょう。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org6c362f6" class="outline-2">
+<h2 id="org6c362f6"><span class="section-number-2">10.</span> ワークフロー</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+誰もが読み飛ばしてしまうこの章こそ、実は最重要です。Org Mode の学習が最初うまくいかなかったのは、順番を間違えていたからです。何をさせたいのかまったく決めないまま、使い始めようとしていました。
+</p>
+</div>
+<div id="outline-container-org6e93422" class="outline-3">
+<h3 id="org6e93422"><span class="section-number-3">10.1.</span> このガイドが解決しようとしていること</h3>
+<div class="outline-text-3" id="text-10-1">
+<p>
+Org Mode を理解するには、二段階のプロセスが必要です。第一段階は、自分に合った仮のワークフローを決めること。第二段階は、そのワークフローを支える Org Mode の機能を見つけること。
+</p>
+
+<p>
+このガイドは、あなたにとって最適なワークフローを探る手助けをします。そのうえで、いくつかの典型的な Org 設定を紹介し、それぞれがワークフローのどの部分を支えるかを示します。すべてはモジュール形式になっているので、必要なものを自由に選んで組み込めます。考えられるワークフローや機能を網羅しているわけではなく、入門者が応用できる典型例を示すことを目的としています。
+</p>
+
+<p>
+では、問題の核心に迫りましょう。
+</p>
+</div>
+</div>
+<div id="outline-container-org4c93393" class="outline-3">
+<h3 id="org4c93393"><span class="section-number-3">10.2.</span> ワークフローを理解する</h3>
+<div class="outline-text-3" id="text-10-2">
+<p>
+Org Mode の入門サイトの多くは、その人の非常に具体的なワークフローを支える詳細な設定を紹介しています。その人にとっては素晴らしいものでも、読んでいる自分が本当に必要としているのはその10%にすぎないことがほとんどです。しかも、ひとつの完結した全体として提示されているため、欲しい部分だけを切り出すのが難しく、どこをいじると何が壊れるかもわかりません。
+</p>
+
+<p>
+ですから、設定コードを書き始める前に、一歩引いて考える必要があります。「自分のワークフローはどうあるべきか？」という問いに向き合うことです。
+</p>
+
+<p>
+このドキュメントで「ワークフロー」という言葉を何度も使うので、ここで定義しておきましょう。ワークフローとは、あるタスクを完遂するためのすべての手順の総体です。情報の処理、進捗の追跡、重要な詳細の整理、リソースの管理など、さまざまなステップが含まれます。
+</p>
+
+<p>
+あなたにはすでに、メールクライアント・カレンダー・付箋・ノート・テキストメッセージ・Word 文書などを使ったワークフローがあるはずです。Org は生活の複雑さを魔法のように解決してくれるわけではありませんが、その複雑さを管理するのをずっと楽にしてくれます。このガイドを読み終える頃には、Org Mode を自分の既存のルーティンに組み込む方法が見えてくるはずです。
+</p>
+
+<p>
+ワークフローをより具体的に示すため、筆者自身の例を紹介します。
+</p>
+</div>
+<div id="outline-container-org3993465" class="outline-4">
+<h4 id="org3993465"><span class="section-number-4">10.2.1.</span> 個人的なワークフローの例</h4>
+<div class="outline-text-4" id="text-10-2-1">
+<p>
+家のプロジェクト、たとえば作りたい家具、家のリノベーション、DIY作業、将来買いたい工具などを管理したいとします。こういったプロジェクトの典型的な流れはこうなります。
+</p>
+
+<p>
+<code>プロジェクト作成 → 詳細追加 → メモ追加 → 調査 → 作業開始 → 完成</code>
+</p>
+
+<p>
+たとえば新しいダイニングテーブルを作るなら、プロジェクトのエントリーを作り、サイズや必要な座席数などの詳細を追加します。次にスタイル（カントリー風かモダン風か）や木材（オークとウォールナットの価格比較）について調査します。すべての情報が揃ったら手順（木材の購入・採寸・カット・組み立て・仮組み・ヤスリ・塗装・仕上げ）を作り、どれくらいかかるか（何週間もの休日）を見積もってから、実際の作業に入ります。
+</p>
+</div>
+</div>
+<div id="outline-container-orgbf86f9d" class="outline-4">
+<h4 id="orgbf86f9d"><span class="section-number-4">10.2.2.</span> ワークフローの選択肢を理解する</h4>
+<div class="outline-text-4" id="text-10-2-2">
+<p>
+さて、あなたは Org Mode を使って……何かをしたいと思っています。何がしたいかはまだよくわからないけど、賢い人たちがこぞって便利だと言うから試してみたい、というわけです。そして多くの入門者がそうするように、入門ガイドを読み、ドキュメントをざっと眺め、何もわからないまま途方に暮れて、やがて諦めた——。
+</p>
+
+<p>
+でも今日は違います。今日から変わります。
+</p>
+
+<p>
+まず、どんなふうに使いたいかをブレインストーミングすることから始めましょう。最初は、自分のワークフローのもっともシンプルなバージョンだけを考えてください。これは後から変わるものだ、何も決定事項ではない、という前提で取り組みましょう。あくまで「捨てられる初稿」として扱ってください——Org Mode への理解が深まるにつれて、大幅に修正・再設計されていくものです。以下のリストを見て、自分の新しい Org Mode ワークフローに取り込みたいものがあるか確認しましょう。
+</p>
+
+<p>
+<b>よくあるワークフローの構成要素</b>
+</p>
+<ul class="org-ul">
+<li>メールの処理</li>
+<li>会議メモの記録</li>
+<li>期限付きイベントの追跡</li>
+<li>定期的なイベントの追跡</li>
+<li>汎用TODOリスト</li>
+<li>日記</li>
+<li>作業ログ</li>
+<li>タスクの優先順位付け</li>
+<li>時間の記録</li>
+<li>レポートの生成</li>
+<li>プレゼンのアウトライン</li>
+<li>本のアウトライン</li>
+<li>JIRAチケットの管理</li>
+<li>コードのバグ追跡</li>
+<li>一般的なフォーマットへのドキュメント出力</li>
+</ul>
+
+<p>
+など、他にもたくさんあります。
+</p>
+
+<p>
+余談ですが、筆者がなかなか理解できなかったことのひとつに「すべてを連携させなくてもいい」というポイントがあります。日記をつけたいなら、それを他の何かと統合する必要はありません。会議メモをひとつのファイルに、TODOを別のファイルに保存して、それらをアジェンダビューで参照する、という使い方でいいのです。
+</p>
+</div>
+</div>
+<div id="outline-container-org1aefee5" class="outline-4">
+<h4 id="org1aefee5"><span class="section-number-4">10.2.3.</span> 最初のワークフローを決める</h4>
+<div class="outline-text-4" id="text-10-2-3">
+<p>
+ここまできたら、上のリストを眺めて（あくまで一例であり網羅的なリストではありません）、取り入れたいものを選びましょう。すべての例を実装するつもりはありません（それは小さな一冊分の作業になりますし、そこまでの根気はありません）が、重要なものをいくつか実装することで、自分のワークフローを構築するための土台になるはずです。
+</p>
+
+<p>
+やりたいことが決まったら、Org Mode を組み込むためのもっともシンプルなやり方を考えましょう。たとえば、こういう考え方はやめてください。
+</p>
+
+<p>
+<i>"メールクライアントと連携して、メールを取り込んで、タグを付けて、そこからTODOを作って、アジェンダビューに表示するにはどうすればいいか……"</i>
+</p>
+
+<p>
+こういう考え方にしてください。
+</p>
+
+<p>
+<i>"メールからTODOを作りたい"</i>
+</p>
+
+<p>
+2番目の考え方には、複雑な設定は不要です。もちろんその分、手動の手順が増えることになりますが、それで構いません！この例で言えば、次のようなワークフローを考えてみてください。
+</p>
+
+<p>
+<b>試しのワークフロー案</b>
+</p>
+<ul class="org-ul">
+<li>ブラウザでGmailを開く</li>
+<li>未読メッセージを確認する</li>
+<li>Emacsを開く</li>
+<li>新しいメール用TODOを作成する</li>
+<li>コピー＆ペーストで詳細を記入する</li>
+<li>これを1週間続ける</li>
+<li>充実した毎日を送る</li>
+</ul>
+
+<p>
+こう思うかもしれません。これは面倒だ。つまらない。Org Modeの機能を全然活かしていない！あの「魔法」はどこへ行ったんだ？
+</p>
+
+<p>
+その気持ちはわかります、本当に。でも今はその段階ではありません。このステップは、この試しのワークフローが実際に役立つかどうかを見極めることが目的です。役立つなら、Emacs をメールの処理ハブに育てていけばいい。でも数日やってみて、「実はメールよりも会議の方がTODOの発生源だった」と気づくかもしれません。そうなれば、メールを中心に据えたワークフローは自分には合わないということになります。
+</p>
+
+<p>
+残念ながら近道はありません。いろいろ試して、何がしっくりくるかを見つけるしかない。万人向けの正解など存在しないのです。大切なのは、いろいろなアプローチを試すこと、最小限の投資（メール設定に10時間かけた後に結局使わなくなったときの虚しさを想像してください）で始めること、そして使えると感じた部分を磨いていくこと。
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org50ce213" class="outline-2">
+<h2 id="org50ce213"><span class="section-number-2">11.</span> キャプチャテンプレートの設定</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+このセクションでは、先ほど挙げたワークフローの要素のいくつかを支える、5種類の設定を紹介します。それぞれ Org Mode の共通の設計思想を示しながらも、Org のもっとも便利な機能をそれぞれ異なる形で見せてくれます。
+</p>
+
+<p>
+いよいよ核心に入ります。以下に一連の手順が記されています。設定間の依存関係があるため、すべてを順番に読み通してから実装に移ることをおすすめします。できるだけ独立した形で書いていますが、全体を把握してから取り組む方が確実です。
+</p>
+</div>
+<div id="outline-container-orge89a06c" class="outline-3">
+<h3 id="orge89a06c"><span class="section-number-3">11.1.</span> 始める前に</h3>
+<div class="outline-text-3" id="text-11-1">
+<p>
+リストを眺めて、試したいものをいくつか選び、ワークフローのイメージが固まったら、いよいよ設定に入りましょう。まず <a href="https://orgmode.org/quickstart.html">Org Mode クイックスタートガイド</a> をまだ読んでいなければ確認しておきましょう。すべてを暗記する必要はありませんが、ブラウザで開いておき、わからないことがあれば参照できるようにしておくと便利です。また、Emacs の設定についてある程度の知識があると助かります。はじめてでも何とかなりますが、Org Mode を Emacs 入門の最初のパッケージに選ぶのはおすすめしません。
+</p>
+</div>
+</div>
+<div id="outline-container-orgde6199d" class="outline-3">
+<h3 id="orgde6199d"><span class="section-number-3">11.2.</span> デフォルト設定</h3>
+<div class="outline-text-3" id="text-11-2">
+<p>
+以下は、筆者が使いやすさのために設定している Org Mode のデフォルト設定です。このリポジトリの .emacs ファイルに全設定がまとめてあります。後ほど追加の設定も紹介しますが、まずは基本的なものから始めましょう。これらの行を .emacs ファイル（または設定ファイル）にコピーしてください。
+</p>
+
+<p>
+<b>Org Mode デフォルト設定</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #989898;">;; </span><span style="color: #989898;">use-package &#12364;&#12414;&#12384;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12373;&#12428;&#12390;&#12356;&#12394;&#12356;&#22580;&#21512;&#12398;&#28310;&#20633;
+</span>(<span style="color: #b6a0ff;">unless</span> (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">use-package &#12434;&#26377;&#21177;&#21270;
+</span>(<span style="color: #b6a0ff;">eval-when-compile</span>
+  (<span style="color: #b6a0ff;">require</span> '<span style="color: #00bcff;">use-package</span>))
+(<span style="color: #b6a0ff;">setq</span> use-package-always-ensure t)
+(<span style="color: #b6a0ff;">use-package</span> org
+  <span style="color: #f78fe7;">:pin</span> gnu)
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">&#12450;&#12472;&#12455;&#12531;&#12480;&#12364;&#12501;&#12449;&#12452;&#12523;&#12434;&#26908;&#32034;&#12391;&#12365;&#12427;&#12424;&#12358;&#12289;&#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12434;&#25351;&#23450;&#12377;&#12427;
+</span>(<span style="color: #b6a0ff;">setq</span> org-agenda-files '(<span style="color: #79a8ff;">"~/org"</span>))
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">TODO&#12364;&#23436;&#20102;&#29366;&#24907;&#12395;&#12394;&#12387;&#12383;&#12392;&#12365;&#12289;&#12479;&#12452;&#12512;&#12473;&#12479;&#12531;&#12503;&#12434;&#35352;&#37682;&#12377;&#12427;
+</span>(<span style="color: #b6a0ff;">setq</span> org-log-done 'time)
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">Enter&#12461;&#12540;&#12391;&#12522;&#12531;&#12463;&#12434;&#38283;&#12367;
+</span>(<span style="color: #b6a0ff;">setq</span> org-return-follows-link  t)
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">&#12377;&#12409;&#12390;&#12398; .org &#12501;&#12449;&#12452;&#12523;&#12434; Org Mode &#12395;&#38306;&#36899;&#20184;&#12369;&#12427;
+</span>(add-to-list 'auto-mode-alist '(<span style="color: #79a8ff;">"\\.org\\'"</span> . org-mode))
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">&#12452;&#12531;&#12487;&#12531;&#12488;&#12434;&#35211;&#12420;&#12377;&#12367;&#12377;&#12427;
+</span>(add-hook 'org-mode-hook 'org-indent-mode)
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">&#20778;&#20808;&#24230;&#12398;&#22793;&#26356;&#12461;&#12540;&#12434; UP/DOWN &#12461;&#12540;&#12395;&#21106;&#12426;&#24403;&#12390;&#12427;
+</span>(define-key org-mode-map (kbd <span style="color: #79a8ff;">"C-c &lt;up&gt;"</span>) 'org-priority-up)
+(define-key org-mode-map (kbd <span style="color: #79a8ff;">"C-c &lt;down&gt;"</span>) 'org-priority-down)
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">&#12522;&#12531;&#12463;&#12398;&#20445;&#23384;&#12289;&#12450;&#12472;&#12455;&#12531;&#12480;&#12398;&#34920;&#31034;&#12289;&#12461;&#12515;&#12503;&#12481;&#12515;&#12398;&#36215;&#21205;&#12398;&#12471;&#12519;&#12540;&#12488;&#12459;&#12483;&#12488;
+</span>(define-key global-map <span style="color: #79a8ff;">"\C-cl"</span> 'org-store-link)
+(define-key global-map <span style="color: #79a8ff;">"\C-ca"</span> 'org-agenda)
+(define-key global-map <span style="color: #79a8ff;">"\C-cc"</span> 'org-capture)
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">Org &#12450;&#12452;&#12486;&#12512;&#12398;&#12524;&#12505;&#12523;&#12434;&#22793;&#26356;&#12377;&#12427;&#12395;&#12399; SMR &#12434;&#20351;&#12358;
+</span>(define-key org-mode-map (kbd <span style="color: #79a8ff;">"C-c C-g C-r"</span>) 'org-shiftmetaright)
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">&#12510;&#12540;&#12459;&#12540;&#12434;&#38750;&#34920;&#31034;&#12395;&#12375;&#12390;&#12289;&#22826;&#23383;&#12399; *BOLD* &#12391;&#12399;&#12394;&#12367; BOLD &#12392;&#12375;&#12390;&#34920;&#31034;&#12377;&#12427;
+</span>(<span style="color: #b6a0ff;">setq</span> org-hide-emphasis-markers t)
+
+<span style="color: #989898;">;; </span><span style="color: #989898;">&#35501;&#12415;&#12420;&#12377;&#12367;&#12377;&#12427;&#12383;&#12417;&#12289;Org Mode &#12391;&#12399;&#34892;&#12434;&#25240;&#12426;&#36820;&#12377;
+</span>(add-hook 'org-mode-hook 'visual-line-mode)
+</pre>
+</div>
+
+<p>
+<b>任意の Org Mode 設定</b>
+</p>
+
+<p>
+筆者はこの設定でレイアウトが見やすくなると感じていますが、好みは人それぞれなので、任意設定としています。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b6a0ff;">let*</span> ((variable-tuple
+        (<span style="color: #b6a0ff;">cond</span> ((x-list-fonts <span style="color: #79a8ff;">"ETBembo"</span>)         '(<span style="color: #f78fe7;">:font</span> <span style="color: #79a8ff;">"ETBembo"</span>))
+              ((x-list-fonts <span style="color: #79a8ff;">"Source Sans Pro"</span>) '(<span style="color: #f78fe7;">:font</span> <span style="color: #79a8ff;">"Source Sans Pro"</span>))
+              ((x-list-fonts <span style="color: #79a8ff;">"Lucida Grande"</span>)   '(<span style="color: #f78fe7;">:font</span> <span style="color: #79a8ff;">"Lucida Grande"</span>))
+              ((x-list-fonts <span style="color: #79a8ff;">"Verdana"</span>)         '(<span style="color: #f78fe7;">:font</span> <span style="color: #79a8ff;">"Verdana"</span>))
+              ((x-family-fonts <span style="color: #79a8ff;">"Sans Serif"</span>)    '(<span style="color: #f78fe7;">:family</span> <span style="color: #79a8ff;">"Sans Serif"</span>))
+              (nil (<span style="color: #fec43f;">warn</span> <span style="color: #79a8ff;">"&#12469;&#12531;&#12475;&#12522;&#12501;&#12501;&#12457;&#12531;&#12488;&#12364;&#35211;&#12388;&#12363;&#12426;&#12414;&#12379;&#12435;&#12290;Source Sans Pro &#12434;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;"</span>))))
+       (base-font-color     (face-foreground 'default nil 'default))
+       (headline           `(<span style="color: #f78fe7;">:inherit</span> default <span style="color: #f78fe7;">:weight</span> bold <span style="color: #f78fe7;">:foreground</span> ,base-font-color)))
+
+  (custom-theme-set-faces
+   'user
+   `(org-level-8 ((t (,@headline ,@variable-tuple))))
+   `(org-level-7 ((t (,@headline ,@variable-tuple))))
+   `(org-level-6 ((t (,@headline ,@variable-tuple))))
+   `(org-level-5 ((t (,@headline ,@variable-tuple))))
+   `(org-level-4 ((t (,@headline ,@variable-tuple <span style="color: #f78fe7;">:height</span> 1.1))))
+   `(org-level-3 ((t (,@headline ,@variable-tuple <span style="color: #f78fe7;">:height</span> 1.2))))
+   `(org-level-2 ((t (,@headline ,@variable-tuple <span style="color: #f78fe7;">:height</span> 1.3))))
+   `(org-level-1 ((t (,@headline ,@variable-tuple <span style="color: #f78fe7;">:height</span> 1.5))))
+   `(org-document-title ((t (,@headline ,@variable-tuple <span style="color: #f78fe7;">:height</span> 1.6 <span style="color: #f78fe7;">:underline</span> nil))))))
+</pre>
+</div>
+
+<p>
+高さの倍率は好みに合わせて変えてください。これが筆者の設定ですが、大きくしたい・小さくしたいという方はご自由にどうぞ。これらをすべて .emacs ファイルに貼り付けて、Emacs を再起動したら準備完了です。
+</p>
+</div>
+</div>
+<div id="outline-container-orgf7509cc" class="outline-3">
+<h3 id="orgf7509cc"><span class="section-number-3">11.3.</span> インストールするパッケージ</h3>
+<div class="outline-text-3" id="text-11-3">
+<p>
+以下のパッケージを使用しています。手動でインストールする場合はこちらのリストを参照してください。
+</p>
+<ul class="org-ul">
+<li>org-super-agenda</li>
+<li>comment-tags</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd7d7bc9" class="outline-3">
+<h3 id="orgd7d7bc9"><span class="section-number-3">11.4.</span> 設定 #1 - 作業ログ</h3>
+<div class="outline-text-3" id="text-11-4">
+<p>
+日々の仕事の成果を記録することを、筆者は非常に役立てています。ただし、これは日記ではありません。Org Mode を日記として使う方法は、別のチュートリアルやパッケージがすでに存在します。日記を求めているなら、この設定はスキップしてください。
+</p>
+
+<p>
+この場合の日記は数段落にわたる長文の日々の記録を指し、作業ログは成果を箇条書きにしたもの（必要に応じて補足あり）を指します。
+</p>
+
+<p>
+完成イメージ：
+</p>
+
+
+<div id="org84e9b91" class="figure">
+<p><img src="images/work-log-screenshot.png" alt="work-log-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 17: </span>作業ログ スクリーンショット</p>
+</div>
+
+<p>
+これを実現するために必要なコードは以下の通りです。
+</p>
+</div>
+<div id="outline-container-org0db4a1a" class="outline-4">
+<h4 id="org0db4a1a"><span class="section-number-4">11.4.1.</span> キャプチャテンプレート</h4>
+<div class="outline-text-4" id="text-11-4-1">
+<p>
+キャプチャテンプレートを起動したとき、キーは「j」を使います。「j」にしたのは、自宅では日記（journal）に「j」を使っており、「考えを記録する」という行為に一貫して同じキーを割り当てたかったからです。「w」にしたい方はもちろん変えていただいて構いません。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b6a0ff;">setq</span> org-capture-templates
+      '(    
+        (<span style="color: #79a8ff;">"j"</span> <span style="color: #79a8ff;">"&#20316;&#26989;&#12525;&#12464;&#12456;&#12531;&#12488;&#12522;"</span>
+         entry (file+datetree <span style="color: #79a8ff;">"~/org/work-log.org"</span>)
+         <span style="color: #79a8ff;">"* %?"</span>
+         <span style="color: #f78fe7;">:empty-lines</span> 0)
+        ))
+</pre>
+</div>
+
+<p>
+すべての作業ログは、上の画像に示す日付構造で <code>work-log.org</code> ファイルに保存されます。この構造の変更方法については、マニュアルの <code>org-capture-templates</code> を参照してください。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb9a4db3" class="outline-3">
+<h3 id="orgb9a4db3"><span class="section-number-3">11.5.</span> 設定 #2 - シンプルなメモ</h3>
+<div class="outline-text-3" id="text-11-5">
+<p>
+どうでもいい情報を一時的に保存しておく場所です。物置の扉の暗証番号、どこかにしまった「いつか必要になる部品」の置き場所、何度も調べ直してしまうちょっとした豆知識、といったものを記録します。タグも絞り込みも自動処理も何もありません。これは考えられる中でもっともシンプルな Org Mode の活用例で、参考として掲載しています。
+</p>
+
+
+<div id="orga4199f2" class="figure">
+<p><img src="images/random-notes-screenshot.png" alt="random-notes-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 18: </span>ランダムメモ スクリーンショット</p>
+</div>
+
+<p>
+キャプチャテンプレートはこちらです。
+</p>
+</div>
+<div id="outline-container-org672c1fe" class="outline-4">
+<h4 id="org672c1fe"><span class="section-number-4">11.5.1.</span> キャプチャテンプレート</h4>
+<div class="outline-text-4" id="text-11-5-1">
+<p>
+上の作業ログテンプレートと合わせて使いたい場合は、~(setq org-capture&#x2026;~ から始まる全体ではなく、小さなサブセクションだけをコピーすれば十分です。シンプルなメモのテンプレートはこちらです。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b6a0ff;">setq</span> org-capture-templates
+      '(    
+        (<span style="color: #79a8ff;">"n"</span> <span style="color: #79a8ff;">"&#12513;&#12514;"</span>
+         entry (file+headline <span style="color: #79a8ff;">"~/org/notes.org"</span> <span style="color: #79a8ff;">"&#12521;&#12531;&#12480;&#12512;&#12513;&#12514;"</span>)
+         <span style="color: #79a8ff;">"** %?"</span>
+         <span style="color: #f78fe7;">:empty-lines</span> 0)
+        ))
+</pre>
+</div>
+
+<p>
+ここには日付の構造は不要で、ランダムなメモが長いリストとして並ぶだけです。同じファイルに「ドアの暗証番号」という別の見出しを追加したい場合は、次のようにキャプチャテンプレートをもう一つ追加できます。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b6a0ff;">setq</span> org-capture-templates
+      '(
+        (<span style="color: #79a8ff;">"n"</span> <span style="color: #79a8ff;">"&#12513;&#12514;"</span>
+         entry (file+headline <span style="color: #79a8ff;">"~/org/notes.org"</span> <span style="color: #79a8ff;">"&#12521;&#12531;&#12480;&#12512;&#12513;&#12514;"</span>)
+         <span style="color: #79a8ff;">"** %?"</span>
+         <span style="color: #f78fe7;">:empty-lines</span> 0)
+
+        (<span style="color: #79a8ff;">"d"</span> <span style="color: #79a8ff;">"&#12489;&#12450;&#12398;&#26263;&#35388;&#30058;&#21495;"</span>
+         entry (file+headline <span style="color: #79a8ff;">"~/org/notes.org"</span> <span style="color: #79a8ff;">"&#12489;&#12450;&#12398;&#26263;&#35388;&#30058;&#21495;"</span>)
+         <span style="color: #79a8ff;">"** %?"</span>
+         <span style="color: #f78fe7;">:empty-lines</span> 0)
+        ))
+</pre>
+</div>
+
+<p>
+このキャプチャテンプレートで記録された内容はすべて、対応する見出しの下に保存されます。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org4afe8f9" class="outline-3">
+<h3 id="org4afe8f9"><span class="section-number-3">11.6.</span> 設定 #3 - 汎用TODO</h3>
+<div class="outline-text-3" id="text-11-6">
+<p>
+いよいよ Org Mode が素晴らしい理由の核心、TODOアイテムの追跡機能に踏み込んでいきます！この機能を深く掘り下げるには複数の設定が必要ですが、まずシンプルな「汎用TODO」から始め、後のステップで機能を追加していきます。アジェンダのセクションでTODOの整理方法を扱いますが、ここではまずTODOを作ることに集中します。
+</p>
+
+
+<div id="org294f823" class="figure">
+<p><img src="images/general-tasks-screenshot.png" alt="general-tasks-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 19: </span>汎用タスク スクリーンショット</p>
+</div>
+
+<p>
+ひとつのTODOを詳しく見てみましょう。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">* OBE [#B] Mikeに壊れたリストアについて聞く
+  CLOSED: [2021-11-15 Mon 13:09]
+  - State "OBE"       from "IN-PROGRESS" [2021-11-15 Mon 13:09]
+  - State "IN-PROGRESS" from "TODO"       [2021-11-09 Tue 15:13] \\
+    CCRS-4453 に取り込む。
+
+  具体的には、リストアが失敗したときどうするか。そのままの状態にしておくのか？
+
+</pre>
+</div>
+
+<p>
+ここにはいろいろな要素が詰まっているので、各部分に分解して説明します。このTODOの構成要素は以下の通りです。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">* 状態 [#優先度] タイトル
+  - 状態変化 2              タイムスタンプ
+  - 状態変化 1              タイムスタンプ
+    状態変化 1 に関するメモ
+
+  TODOに関するメモ
+</pre>
+</div>
+</div>
+<div id="outline-container-org019cb81" class="outline-4">
+<h4 id="org019cb81"><span class="section-number-4">11.6.1.</span> TODOアイテムの構成要素</h4>
+<div class="outline-text-4" id="text-11-6-1">
+<p>
+各要素を順番に見ていきましょう。
+</p>
+
+<p>
+<b>状態</b>
+このTODOは <code>OBE~（overcome by events：状況の変化により不要になった）に設定されています。他のTODOは ~DONE~・~TODO~・~IN-PROGRESS</code> などに設定されます。状態の設定方法はすぐ後で説明しますが、今はそれぞれのTODOが複数の状態を遷移できる、ということだけ知っておけば十分です。
+</p>
+
+<p>
+<b>優先度</b>
+各TODOには優先度を設定できます。[DEFCON 1, TROUBLE, MILDLY-BAD, SAFELY-IGNORE] のように独自のセットを作ることもできますが、デフォルトの [A,B,C] で十分機能します。ここでは <code>A</code> が最高優先度、~C~ が最低優先度です。アジェンダビューの説明に進めばより理解できるので、今は深く考えなくて大丈夫です。
+</p>
+
+<p>
+<b>タイトル</b>
+キャプチャメニューから入力されるTODOの名前です。
+</p>
+
+<p>
+<b>状態変化 2</b>
+最新の状態変化です。この例では <code>IN-PROGRESS</code> から <code>OBE</code> へ変化し、その際のタイムスタンプが記録されています。
+</p>
+
+<p>
+<b>状態変化 1</b>
+最初の状態変化です。~TODO~ から <code>IN-PROGRESS</code> への変化と、そのタイムスタンプが記録されています。
+</p>
+
+<p>
+<b>状態変化 1 のメモ</b>
+このTODOの作業が開始され、状態が変化したときに追加されたメモです。
+</p>
+
+<p>
+<b>メモ</b>
+詳細はここに記載します。もっと詳しく書くこともできますが、この例では1行に留めています。
+</p>
+</div>
+</div>
+<div id="outline-container-orgb2c45ab" class="outline-4">
+<h4 id="orgb2c45ab"><span class="section-number-4">11.6.2.</span> TODOワークフローの説明</h4>
+<div class="outline-text-4" id="text-11-6-2">
+<p>
+全体的な考え方はこうです。TODOアイテムをキャプチャし、優先度を割り当て、やるべきことの詳細を記録します。記録したら後日改めて取り組み、作業を開始したら状態を <code>IN-PROGRESS</code> に変更します。このとき、短いメモを書くよう促され（必須ではなく空欄でも可）、状態変化のタイムスタンプが記録されます。最終的に作業が完了したら、TODOを完了状態に設定します。この例での完了状態は <code>DONE~・~OBE~・~WONT-DO</code> です。しかし今は先走らず、まず設定を見ていきましょう。
+</p>
+</div>
+</div>
+<div id="outline-container-orge984f88" class="outline-4">
+<h4 id="orge984f88"><span class="section-number-4">11.6.3.</span> キャプチャテンプレート</h4>
+<div class="outline-text-4" id="text-11-6-3">
+<p>
+汎用TODOアイテムは、キャプチャテンプレートバッファから <code>g</code> でキャプチャします。すべてのTODOは <code>todos.org</code> ファイルの <code>General Tasks</code> 見出し下に保存されます。初期状態は <code>TODO~、初期優先度は ~B</code> に設定されています。加えて、このTODOが作成された日時を記録する <code>Created:</code> フィールドも追加しています。後でフィルタリングに使えますが、オプションのメタデータとして付けておくと便利です。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b6a0ff;">setq</span> org-capture-templates
+      '(    
+        (<span style="color: #79a8ff;">"g"</span> <span style="color: #79a8ff;">"&#27726;&#29992;TODO"</span>
+         entry (file+headline <span style="color: #79a8ff;">"~/org/todos.org"</span> <span style="color: #79a8ff;">"General Tasks"</span>)
+         <span style="color: #79a8ff;">"* TODO [#B] %?\n:Created: %T\n "</span>
+         <span style="color: #f78fe7;">:empty-lines</span> 0)
+      ))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org6bdfc6f" class="outline-4">
+<h4 id="org6bdfc6f"><span class="section-number-4">11.6.4.</span> Org の状態</h4>
+<div class="outline-text-4" id="text-11-6-4">
+<p>
+デフォルトでは Org は <code>TODO</code> と <code>DONE</code> の2状態しかありませんが、実際にはもっと多くのニュアンスを捉えたいものです。ということで、今そうしましょう。以下は筆者が設定している状態です（プログラマー向けのものも含むため、すべてが当てはまるわけではありません）。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #989898;">;; </span><span style="color: #989898;">TODO &#12398;&#29366;&#24907;
+</span>(<span style="color: #b6a0ff;">setq</span> org-todo-keywords
+      '((sequence <span style="color: #79a8ff;">"TODO(t)"</span> <span style="color: #79a8ff;">"PLANNING(p)"</span> <span style="color: #79a8ff;">"IN-PROGRESS(i@/!)"</span> <span style="color: #79a8ff;">"VERIFYING(v!)"</span> <span style="color: #79a8ff;">"BLOCKED(b@)"</span>  <span style="color: #79a8ff;">"|"</span> <span style="color: #79a8ff;">"DONE(d!)"</span> <span style="color: #79a8ff;">"OBE(o@!)"</span> <span style="color: #79a8ff;">"WONT-DO(w@/!)"</span> )
+        ))
+</pre>
+</div>
+
+<p>
+8種類の状態を設定しています。最初の5つがアクティブな状態で、残りの3つが非アクティブ（完了）状態です。タスクは作成され、作業が始まり、最終的に結論に達するという流れになっています。作業中に確認が必要になったり（別の人からの確認待ちなど）、完全にブロックされたりすることもあります。最終的にはどこかの完了状態に至ります。理想は <code>DONE</code> で作業完了の記録を残すことですが、途中で優先度が下がった場合は <code>OBE</code> を使います。また、あらためて検討した結果、取り組まないことにした場合もあります。理由はさまざまですが——もはや関係なくなった、他の人の担当だった、単に気が変わった——いずれにせよ、記録を残しておきたいので削除はしません。そこで <code>WONT-DO</code> を使います。
+</p>
+
+<p>
+括弧内の追加文字が気になる方は、ドキュメントで詳しく確認できます。簡単に言うと、ショートカットキーの指定、メモの入力促し、タイムスタンプの記録を意味します。たとえば <code>IN-PROGRESS</code> に設定するとメモの入力が促されてタイムスタンプが記録されますが、~VERIFYING~ への遷移にはメモは不要と判断しています。同様に <code>DONE</code> はタイムスタンプのみですが、~OBE~ と <code>WONT-DO</code> は「なぜ完了できないか」の説明が求められます。
+</p>
+
+<p>
+ここまで設定を進めていると、筆者の例と見た目が違うことに気づくかもしれません。自分のファイルはシンプルな見た目なのに、例ではカラフルで洗練されているのはなぜか？それは、TODOの状態に独自の色を設定しているからです。以下を設定ファイルに追加して、お好みの色に調整してください。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #989898;">;; </span><span style="color: #989898;">TODO &#12398;&#33394;
+</span>(<span style="color: #b6a0ff;">setq</span> org-todo-keyword-faces
+      '(
+        (<span style="color: #79a8ff;">"TODO"</span> . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"GoldenRod"</span> <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"PLANNING"</span> . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"DeepPink"</span> <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"IN-PROGRESS"</span> . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"Cyan"</span> <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"VERIFYING"</span> . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"DarkOrange"</span> <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"BLOCKED"</span> . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"Red"</span> <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"DONE"</span> . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"LimeGreen"</span> <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"OBE"</span> . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"LimeGreen"</span> <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"WONT-DO"</span> . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"LimeGreen"</span> <span style="color: #f78fe7;">:weight</span> bold))
+        ))
+</pre>
+</div>
+
+<p>
+TODOの設定はここで完了です。設定を保存してリロードし、いろいろ試してみてください。色などを好みに合わせて調整しましょう。簡単な部分が終わったので、次はより複雑な設定に進みましょう。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orge7dc731" class="outline-3">
+<h3 id="orge7dc731"><span class="section-number-3">11.7.</span> 設定 #4 - プログラマー向けTODO</h3>
+<div class="outline-text-3" id="text-11-7">
+<p>
+この設定を独立したセクションとして設けたのは、プログラマーでない読者を混乱させたくないからです。前のセクションに含めようとも思いましたが、すでに十分長くなっていると感じたので分けました。以下は、プログラマーにとってのみ役立つ機能です。
+</p>
+</div>
+<div id="outline-container-org9c68051" class="outline-4">
+<h4 id="org9c68051"><span class="section-number-4">11.7.1.</span> バグの追跡</h4>
+<div class="outline-text-4" id="text-11-7-1">
+<p>
+筆者はすべての開発を Emacs で行います。言語を問わず、常に開いています。そのため、ソースコードをスキャンしていて「後で直したい」と思う箇所を見つけることがよくあります。比較的単純なものなら、コードにコメントを残しておくだけで済みます。しかし複雑なもの——新しいエッジケースを発見した、20分かけてやっと解読した難解なコードで3ヶ月後にまたゼロから読み解きたくない——といった場合には、バグの場所をキャプチャしてTODOアイテム内に保存できると非常に便利です。
+</p>
+</div>
+</div>
+<div id="outline-container-org5425beb" class="outline-4">
+<h4 id="org5425beb"><span class="section-number-4">11.7.2.</span> キャプチャテンプレート</h4>
+<div class="outline-text-4" id="text-11-7-2">
+<p>
+コード専用のTODOです。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b6a0ff;">setq</span> org-capture-templates
+      '(    
+        (<span style="color: #79a8ff;">"c"</span> <span style="color: #79a8ff;">"&#12467;&#12540;&#12489;TODO"</span>
+         entry (file+headline <span style="color: #79a8ff;">"~/org/todos.org"</span> <span style="color: #79a8ff;">"Code Related Tasks"</span>)
+         <span style="color: #79a8ff;">"* TODO [#B] %?\n:Created: %T\n%i\n%a\n&#35299;&#27770;&#31574;&#12398;&#25552;&#26696;: "</span>
+         <span style="color: #f78fe7;">:empty-lines</span> 0)
+        ))
+</pre>
+</div>
+
+<p>
+このキャプチャは、リンクを貼りたいコードの行にカーソルを置いた状態で実行する必要があります。コードTODOを作成すると、新しいTODOアイテムが生成されるとともに、そのTODOがコードの特定の行にリンクされます。リンクをたどれば、参照していた箇所にすぐ戻ることができます。
+</p>
+
+<p>
+もちろんこれはコードだけでなく、あらゆるテキストファイルで使えます。本を書いていて、後で書き直したい特定の段落にしおりを挟みたい、といった用途にもぴったりです。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org1ab2236" class="outline-3">
+<h3 id="org1ab2236"><span class="section-number-3">11.8.</span> 設定 #5 - 会議</h3>
+<div class="outline-text-3" id="text-11-8">
+<p>
+会議データのキャプチャには2つの側面があります。「スケジュール管理・参加者の把握」という側面と、「メモの記録・アクションアイテム・次の行動」という側面です。
+</p>
+
+<p>
+前者のスケジュール管理については、Microsoft の Outlook を使っています。Outlook は嫌いですが、みんなが使っています。会議のスケジュールはそこで管理され、メールとシステム通知でリマインダーが届き、会議時には Teams のリンクも提供してくれます。その機能はすでに存在し、会社全員が使っているので、今さら再現しようとする必要はありません。この一勝は Microsoft に譲りましょう。
+</p>
+
+<p>
+しかし後者、つまり会議のメモ管理は Org が真価を発揮する領域です。Org は <code>DEADLINE</code> や <code>SCHEDULED</code> タグをサポートしており、便利な使い方もありますが、筆者の実際のワークフローではあまり活躍していません。あらかじめスケジュールを立てることが少なく、それらの機能が活かせないのです。代わりに、同僚から「ちょっと20分いいですか」や上司から「方向性について話したい」といった突発的な会議が1日に何件もあります。これらの会議には非常に有益な情報や、後でやるべきアクションアイテムが含まれています。そのニーズを満たすために、TODOとタグを組み合わせて会議を確実に記録するキャプチャテンプレートを作成しました。
+</p>
+
+<p>
+以下は自分の会議の一部を示した概要です。読みやすくするために週単位でグループ化され、折りたたまれた状態で表示されています。週ごとのグループ化は過去の会議を振り返る際に便利なため、個人的にこの形式を好んでいます。
+</p>
+
+
+<div id="org1921849" class="figure">
+<p><img src="images/meetings-by-week-screenshot.png" alt="meetings-by-week-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 20: </span>会議の週次ビュー（高レベル）</p>
+</div>
+
+<p>
+ここでは1段階展開した様子を示しています。各日の各会議のタイトルが確認できます。色のついた単語はタグで、詳しくは後述します。
+</p>
+
+
+<div id="orgfac0323" class="figure">
+<p><img src="images/meetings-by-day-overview-screenshot.png" alt="meetings-by-day-overview-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 21: </span>日ごとの会議一覧</p>
+</div>
+
+<p>
+最後に、木曜日の会議の全詳細が表示されています。内容は盛りだくさんです。メタデータの <code>LOGBOOK~、作成タイムスタンプ、会議の所要時間を示す ~CLOCK</code> 値、参加者、メモ、そしてアクションアイテム！
+</p>
+
+
+<div id="orgca1fe48" class="figure">
+<p><img src="images/meeting-details-screenshot.png" alt="meeting-details-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 22: </span>会議の詳細</p>
+</div>
+
+<p>
+いつも通り、まずキャプチャテンプレートから見ていきましょう。
+</p>
+</div>
+<div id="outline-container-orgf08828f" class="outline-4">
+<h4 id="orgf08828f"><span class="section-number-4">11.8.1.</span> キャプチャテンプレート</h4>
+<div class="outline-text-4" id="text-11-8-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b6a0ff;">setq</span> org-capture-templates
+      '(    
+        (<span style="color: #79a8ff;">"m"</span> <span style="color: #79a8ff;">"&#20250;&#35696;"</span>
+         entry (file+datetree <span style="color: #79a8ff;">"~/org/meetings.org"</span>)
+         <span style="color: #79a8ff;">"* %? :meeting:%^g \n:Created: %T\n** &#21442;&#21152;&#32773;\n*** \n** &#12513;&#12514;\n** &#12450;&#12463;&#12471;&#12519;&#12531;&#12450;&#12452;&#12486;&#12512;\n*** TODO [#A] "</span>
+         <span style="color: #f78fe7;">:tree-type</span> week
+         <span style="color: #f78fe7;">:clock-in</span> t
+         <span style="color: #f78fe7;">:clock-resume</span> t
+         <span style="color: #f78fe7;">:empty-lines</span> 0)
+        ))
+</pre>
+</div>
+
+<p>
+これは今まで見た中でもっとも複雑なキャプチャテンプレートなので、1行ずつ見ていきましょう。~entry~ の値はファイルの保存構造を定義します。次の行は会議がどのように記録されるかのテンプレートで、~%T~ のような Org 特殊文字（タイムスタンプを生成する）も含まれています。この行には <code>:meeting:</code> タグ（後で使用）と、空のTODOが事前入力された <code>アクションアイテム</code> セクションも含まれています。
+</p>
+
+<p>
+キャプチャテンプレートを起動して「m」を押すと、ミニバッファに追加タグを入力するオプションが表示されます。タグを追加しなくても問題なく、後から追加することもできますが、ここで最初のタグを付けることもできます。
+</p>
+
+
+<div id="orgb4c5357" class="figure">
+<p><img src="images/meeting-capture-screenshot.png" alt="meeting-capture-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 23: </span>会議のキャプチャ</p>
+</div>
+
+<p>
+この例では <code>:james:</code> タグを追加しました（この会議は全部自分に関わるものなので）。タグを選んでEnterキーを押すと、次のような状態になります。
+</p>
+
+
+<div id="org77a09ae" class="figure">
+<p><img src="images/meeting-with-tags-screenshot.png" alt="meeting-with-tags-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 24: </span>入力準備完了の会議テンプレート</p>
+</div>
+
+<p>
+見通しが立ってきました。~*~ の隣の空白部分が会議のタイトルを入れる場所です。タグが2つ（meeting と james）、時間記録用の <code>LOGBOOK</code> エントリー、カスタムメタデータ ~:Created:~（アジェンダのセクションで詳述）、参加者リスト、メモ欄、そしてアクションアイテム欄があります。
+</p>
+
+<p>
+会議が始まり、キャプチャテンプレートを起動して情報を入力している状態を実際に入力した例で確認してみましょう。
+</p>
+
+
+<div id="orgb8e909b" class="figure">
+<p><img src="images/meeting-in-progress-screenshot.png" alt="meeting-in-progress-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 25: </span>進行中の会議</p>
+</div>
+
+<p>
+キャプチャが終わってファイルに保存されると、会議の所要時間が記録されます。キャプチャテンプレートが起動した瞬間にクロックが始まり、テンプレートを閉じると停止します。これにより、過去の会議を振り返って同僚に奪われた時間を確認できます。
+</p>
+
+<p>
+重要なポイントとして、タグは会議のベースレベルに設定され、その会議に属するすべての要素がそのタグを継承します。したがって、作成したTODOアイテムは <code>:meeting:</code> と <code>:james:</code> の両タグを継承します。~アクションアイテム~ 配下のTODOに追加のタグを付ければ、そのTODOは3つのタグを持ち、会議自体は2つのタグのままになります。タグについては次のセクションで詳しく説明します。
+</p>
+</div>
+</div>
+<div id="outline-container-org2ce5ef7" class="outline-4">
+<h4 id="org2ce5ef7"><span class="section-number-4">11.8.2.</span> クロックレポート</h4>
+<div class="outline-text-4" id="text-11-8-2">
+<p>
+Org Mode の非常に便利な機能のひとつが、タスクのクロックイン・クロックアウトによる時間追跡です。会議のキャプチャテンプレートでは <code>clock-in</code> を true に設定しているため、会議が作成されるとクロックが始まり、キャプチャテンプレートを閉じた（会議が終わった）時点で停止します。このメタデータは会議の <code>:LOGBOOK:</code> セクションに保存されます。この情報を使って、~org-clock-report~ と <code>org-clock-display</code> の2つのコマンドで時間を視覚的に確認できます。
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="org2f20fa5"></a>クロックレポート<br />
+<div class="outline-text-5" id="text-11-8-2-1">
+<p>
+クロックレポートは <code>org-clock-report</code> で生成され、ファイルに挿入されます。この値は動的ではなく、コマンドが実行された時点のものが記録されます。過去のイベントの時間サマリーを表示するのに便利で、会議に費やした時間を一目で確認できます。請求や프로젝트への時間配分を追跡する必要がある場合に特に役立ちます。以下は3週間分の会議のクロックレポートの例です。
+</p>
+
+
+<div id="orga54ac77" class="figure">
+<p><img src="images/meetings-clock-report-screenshot.png" alt="meetings-clock-report-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 26: </span>クロックレポート</p>
+</div>
+</div>
+</li>
+<li><a id="orgdd0f63a"></a>クロック表示<br />
+<div class="outline-text-5" id="text-11-8-2-2">
+<p>
+クロック表示は、さまざまなエントリーに費やした時間をオーバーレイで素早く確認するもので、~org-clock-display~ で表示できます。
+</p>
+
+
+<div id="org683d7ac" class="figure">
+<p><img src="images/meeting-clock-time-overview-screenshot.png" alt="meeting-clock-time-overview-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 27: </span>クロック概要</p>
+</div>
+
+<p>
+さらに詳細を確認すると：
+</p>
+
+
+<div id="org6ac06bf" class="figure">
+<p><img src="images/meeting-detailed-clock-screenshot.png" alt="meeting-detailed-clock-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 28: </span>詳細クロックビュー</p>
+</div>
+
+<p>
+さまざまな会議にどれだけの時間が費やされているかを手軽に把握できます。
+</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org70e50ec" class="outline-2">
+<h2 id="org70e50ec"><span class="section-number-2">12.</span> タグ</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+アジェンダの説明に進む前に、タグについて少し掘り下げておく必要があります。何度か言及してきましたが、設定方法と使い方について詳しく説明します。タグを作りすぎると効果的に使えなくなり、少なすぎるとアジェンダでの活用が半減します。効果的なタグ運用のために筆者が見つけたガイドラインを紹介します。
+</p>
+</div>
+<div id="outline-container-org0500883" class="outline-3">
+<h3 id="org0500883"><span class="section-number-3">12.1.</span> タグをグループ化する</h3>
+<div class="outline-text-3" id="text-12-1">
+<p>
+意味のあるタグのグループを作りましょう。たとえば、家族の各メンバーが週にこなすべき家事を追跡するなら、各人の名前でタグを作ります。レシピを管理するなら、料理の種類（ドイツ料理・フランス料理・ベトナム料理など）でタグを作ります。
+</p>
+
+<p>
+さらに、グループ内で一度に1つのタグしか使えない排他グループも作れます。レシピの例で言えば（朝食、食事、デザート、飲み物）というグループを作れば、そのレシピはこれらのうち一つだけに分類されます。使わなくても構いませんが、使う場合は一度に一つだけです。
+</p>
+</div>
+</div>
+<div id="outline-container-org2c9f25d" class="outline-3">
+<h3 id="org2c9f25d"><span class="section-number-3">12.2.</span> 小さく始める</h3>
+<div class="outline-text-3" id="text-12-2">
+<p>
+最初から20個のタグを作って要らないものを削るより、少数から始めて徐々に増やす方が得策です。まず大まかなグループから始め、自然に細分化が必要な箇所が見えてきたら追加しましょう。タグを付けること自体が目的になってはいけません。タグは最終的に絞り込みや検索に使うものです。使う予定のないタグを作っても意味がありません。
+</p>
+
+<p>
+この料理の例をさらに引っ張ると、~:直火が必要:~ というタグも作れますが、フランベが必要なレシピを絞り込む予定がないなら、作っても仕方ないでしょう。
+</p>
+</div>
+</div>
+<div id="outline-container-org743ec17" class="outline-3">
+<h3 id="org743ec17"><span class="section-number-3">12.3.</span> 超具体的なタグより複数タグの組み合わせが良い</h3>
+<div class="outline-text-3" id="text-12-3">
+<p>
+過度に具体的なタグ（使っていくうちに窮屈になる）を使うより、タグを組み合わせて詳細な注釈を作る方法を考えましょう。メールから作成するTODOなら、~:ケビンとの将来のプロジェクト:~ ではなく <code>:将来のプロジェクト:ケビン:</code> と使いましょう。当然に思えるかもしれませんが、Org Mode を使い始めたばかりの頃は、何が必要かよくわからないまま何でも試してしまい、気づくとどんなタグが機能するかを壁に投げて確かめる状態になりがちです。
+</p>
+</div>
+</div>
+<div id="outline-container-org90357f6" class="outline-3">
+<h3 id="org90357f6"><span class="section-number-3">12.4.</span> タグの定義</h3>
+<div class="outline-text-3" id="text-12-4">
+<p>
+このドキュメントのワークフロー例で使っているタグは以下の通りです。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #989898;">;; </span><span style="color: #989898;">&#12479;&#12464;
+</span>(<span style="color: #b6a0ff;">setq</span> org-tag-alist '(
+                      <span style="color: #989898;">;; </span><span style="color: #989898;">&#12481;&#12465;&#12483;&#12488;&#12398;&#31278;&#39006;
+</span>                      (<span style="color: #f78fe7;">:startgroup</span> . nil)
+                      (<span style="color: #79a8ff;">"@bug"</span> . ?b)
+                      (<span style="color: #79a8ff;">"@feature"</span> . ?u)
+                      (<span style="color: #79a8ff;">"@spike"</span> . ?j)                      
+                      (<span style="color: #f78fe7;">:endgroup</span> . nil)
+
+                      <span style="color: #989898;">;; </span><span style="color: #989898;">&#12481;&#12465;&#12483;&#12488;&#12501;&#12521;&#12464;
+</span>                      (<span style="color: #79a8ff;">"@write_future_ticket"</span> . ?w)
+                      (<span style="color: #79a8ff;">"@emergency"</span> . ?e)
+                      (<span style="color: #79a8ff;">"@research"</span> . ?r)
+
+                      <span style="color: #989898;">;; </span><span style="color: #989898;">&#20250;&#35696;&#12398;&#31278;&#39006;
+</span>                      (<span style="color: #f78fe7;">:startgroup</span> . nil)
+                      (<span style="color: #79a8ff;">"big_sprint_review"</span> . ?i)
+                      (<span style="color: #79a8ff;">"cents_sprint_retro"</span> . ?n)
+                      (<span style="color: #79a8ff;">"dsu"</span> . ?d)
+                      (<span style="color: #79a8ff;">"grooming"</span> . ?g)
+                      (<span style="color: #79a8ff;">"sprint_retro"</span> . ?s)
+                      (<span style="color: #f78fe7;">:endgroup</span> . nil)
+
+                      <span style="color: #989898;">;; </span><span style="color: #989898;">&#12467;&#12540;&#12489;TODO&#12398;&#12479;&#12464;
+</span>                      (<span style="color: #79a8ff;">"QA"</span> . ?q)
+                      (<span style="color: #79a8ff;">"backend"</span> . ?k)
+                      (<span style="color: #79a8ff;">"broken_code"</span> . ?c)
+                      (<span style="color: #79a8ff;">"frontend"</span> . ?f)
+
+                      <span style="color: #989898;">;; </span><span style="color: #989898;">&#29305;&#27530;&#12479;&#12464;
+</span>                      (<span style="color: #79a8ff;">"CRITICAL"</span> . ?x)
+                      (<span style="color: #79a8ff;">"obstacle"</span> . ?o)
+
+                      <span style="color: #989898;">;; </span><span style="color: #989898;">&#20250;&#35696;&#12479;&#12464;
+</span>                      (<span style="color: #79a8ff;">"HR"</span> . ?h)
+                      (<span style="color: #79a8ff;">"general"</span> . ?l)
+                      (<span style="color: #79a8ff;">"meeting"</span> . ?m)
+                      (<span style="color: #79a8ff;">"misc"</span> . ?z)
+                      (<span style="color: #79a8ff;">"planning"</span> . ?p)
+
+                      <span style="color: #989898;">;; </span><span style="color: #989898;">&#20316;&#26989;&#12525;&#12464;&#12479;&#12464;
+</span>                      (<span style="color: #79a8ff;">"accomplishment"</span> . ?a)
+                      ))
+</pre>
+</div>
+
+<p>
+チケットの種類と会議の種類は排他グループになっていることに注意してください。チケットはバグ・機能・スパイクのいずれか一つです。同様に会議も主要な種類が一つだけです。ただし残りのタグは自由に組み合わせられます。会議には <code>:meeting:backend:</code> とタグを付けてバックエンドに関する会議であることを示し、その中で <code>:CRITICAL:@bug:</code> とタグの付いたTODOを作って緊急度の高いバグを記録する、といった使い方ができます。なお、タグ内の「@」は Org Mode では特別な意味を持たず、個人的な覚え書きとして使っているものです。
+</p>
+</div>
+</div>
+<div id="outline-container-org143b43c" class="outline-3">
+<h3 id="org143b43c"><span class="section-number-3">12.5.</span> タグのカラー化</h3>
+<div class="outline-text-3" id="text-12-5">
+<p>
+やる価値があることなら、綺麗にする価値もある——これが筆者の少し変わったモットーです。タグをカッコよく彩りましょう！
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #989898;">;; </span><span style="color: #989898;">&#12479;&#12464;&#12398;&#33394;
+</span>(<span style="color: #b6a0ff;">setq</span> org-tag-faces
+      '(
+        (<span style="color: #79a8ff;">"planning"</span>  . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"mediumPurple1"</span> <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"backend"</span>   . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"royalblue1"</span>    <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"frontend"</span>  . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"forest green"</span>  <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"QA"</span>        . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"sienna"</span>        <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"meeting"</span>   . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"yellow1"</span>       <span style="color: #f78fe7;">:weight</span> bold))
+        (<span style="color: #79a8ff;">"CRITICAL"</span>  . (<span style="color: #f78fe7;">:foreground</span> <span style="color: #79a8ff;">"red1"</span>          <span style="color: #f78fe7;">:weight</span> bold))
+        )
+      )
+</pre>
+</div>
+
+<p>
+これによりタグに色と太さが加わります。個人的には、色のついたタグは一目で情報を把握する助けになり、単調なTODOを格段に見やすくしてくれると感じています。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org9cb1d83" class="outline-2">
+<h2 id="org9cb1d83"><span class="section-number-2">13.</span> 基本的なアジェンダの使い方</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+この沼に足を踏み入れる前に——そして確かにこれは別格の沼です——厳密に言えばアジェンダビューは <i>必須ではない</i> ということをお伝えしておきます。使えば最終的に生活が楽になりますが、最初から使わなくても問題ありません。これだけの内容を一気に習得するのは大変ですし、準備ができてから戻ってきても遅くはありません。
+</p>
+
+<p>
+それを踏まえて、アジェンダビューの核となる部分を見ていきましょう。アジェンダをもっとも単純な形で使うと、主に2つの用途になります。日付ビューでタイムスタンプ付きのアイテムを表示すること、そしてタスクビューでTODOアイテムを表示することです。その他のすべての機能・フィルター・拡張は、この2つの核の上に積み上げられたものです。いくつか例を見てみましょう。
+</p>
+</div>
+<div id="outline-container-orgf5050b1" class="outline-3">
+<h3 id="orgf5050b1"><span class="section-number-3">13.1.</span> アジェンダ週次ビュー</h3>
+<div class="outline-text-3" id="text-13-1">
+<p>
+<code>C-c a</code> でアジェンダ選択ダイアログを開き、リストの最初の選択肢である「今週・今日のアジェンダ」を <code>a</code> で選ぶと表示される基本ビューです。
+</p>
+
+
+<div id="org62a392f" class="figure">
+<p><img src="images/agenda-basic-screenshot.png" alt="agenda-basic-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 29: </span>週次アジェンダの基本ビュー</p>
+</div>
+
+<p>
+その週に多くの会議があったことがわかります。ちなみに、これらの会議とTODOがビューに表示されるのは、それぞれに <code>:Created:</code> フィールドにタイムスタンプがあるからです。設定 #5 に戻って確認してみてください。重要な点として、タイムスタンプのあるものだけがここに表示されます。~deadline~ や <code>scheduled</code> フィールドを使っても同様に機能します。ここで引っかかりやすいポイントなので覚えておきましょう。
+</p>
+
+<p>
+各エントリーの左側にはラベルがあります。そのエントリーが見つかったファイルの名前です。カテゴリー名を設定すれば置き換えられますが、設定していないのでファイル名がそのまま表示されています。右側にはタグが表示されており、後ほど役立ちます。次にTODOビューを見てみましょう。
+</p>
+</div>
+</div>
+<div id="outline-container-org3a6318b" class="outline-3">
+<h3 id="org3a6318b"><span class="section-number-3">13.2.</span> アジェンダTODOビュー</h3>
+<div class="outline-text-3" id="text-13-2">
+<p>
+アジェンダで <code>すべてのTODOエントリーを一覧表示</code> を選択すると、次のような表示になります。
+</p>
+
+
+<div id="org8790771" class="figure">
+<p><img src="images/agenda-todo-view-screenshot.png" alt="agenda-todo-view-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 30: </span>TODOビュー</p>
+</div>
+
+<p>
+すべてのTODOが優先度順、次にファイル（またはカテゴリー）順で表示されます。多くのTODOには複数のタグが付いています。デフォルトビューはある程度の整理を試みていますが、TODOが増えると読みにくくなります。一瞬で把握できる情報は以下の通りです。
+</p>
+
+<ul class="org-ul">
+<li>TODOの出所ファイル（meetings、todos、tickets）</li>
+<li>TODOの状態（~TODO~・~IN-PROGRESS~・~PLANNING~・~VERIFYING~・~BLOCKED~）</li>
+<li>優先度（~A~・~B~・~C~）</li>
+<li>TODOのタイトル</li>
+<li>関連するタグ（planning・backend・CRITICAL など）</li>
+</ul>
+
+<p>
+情報量が多いです。さまざまな方法でフィルタリングできますが（詳細はマニュアルを参照——説明しきれない量があります）、それでも圧倒されることがあります。もう少し読みやすくしましょう。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org8424730" class="outline-2">
+<h2 id="org8424730"><span class="section-number-2">14.</span> 拡張アジェンダ #1</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+次のビューは <a href="https://github.com/aaronbieber/dotfiles/blob/master/configs/emacs.d/lisp/init-org.el">Aaron Bieber</a> のものを参考にして改変したバージョンです。なぜ彼の Github の設定ファイルにたどり着いたか覚えていませんが、素晴らしい内容で、ぜひ一度確認することをおすすめします。Aaron、もしこれを偶然読んでいたら——あなたは最高です。インスピレーションをありがとう。筆者のバージョンはこんな感じです。
+</p>
+</div>
+<div id="outline-container-orgc45d07c" class="outline-3">
+<h3 id="orgc45d07c"><span class="section-number-3">14.1.</span> アジェンダ拡張ビュー</h3>
+<div class="outline-text-3" id="text-14-1">
+
+<div id="org1da0eee" class="figure">
+<p><img src="images/enhanced-agenda-view-screenshot.png" alt="enhanced-agenda-view-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 31: </span>拡張アジェンダビュー</p>
+</div>
+
+<p>
+一目でかなり読みやすくなっているのがわかります。最高優先度のアイテムが上に来て、週次アジェンダビューも組み込まれており、全体的に格段に見やすいビューになっています。これを支えるコードを見てみましょう。
+</p>
+</div>
+</div>
+<div id="outline-container-org46cc5e0" class="outline-3">
+<h3 id="org46cc5e0"><span class="section-number-3">14.2.</span> アジェンダカスタムコマンド</h3>
+<div class="outline-text-3" id="text-14-2">
+<p>
+このビューを追加するにはいくつかの部品が必要です。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #989898;">;; </span><span style="color: #989898;">&#12450;&#12472;&#12455;&#12531;&#12480;&#12499;&#12517;&#12540; "d"
+</span>(<span style="color: #b6a0ff;">defun</span> <span style="color: #feacd0;">air-org-skip-subtree-if-priority</span> (priority)
+  <span style="color: #9ac8e0;">"&#25351;&#23450;&#12375;&#12383;&#20778;&#20808;&#24230; PRIORITY &#12434;&#25345;&#12388;&#12469;&#12502;&#12484;&#12522;&#12540;&#12434;&#12450;&#12472;&#12455;&#12531;&#12480;&#12391;&#12473;&#12461;&#12483;&#12503;&#12377;&#12427;&#12290;
+
+  PRIORITY &#12395;&#12399; ?A&#12289;?B&#12289;?C &#12398;&#12356;&#12378;&#12428;&#12363;&#12398;&#25991;&#23383;&#12434;&#25351;&#23450;&#12377;&#12427;&#12290;"</span>
+  (<span style="color: #b6a0ff;">let</span> ((subtree-end (<span style="color: #b6a0ff;">save-excursion</span> (org-end-of-subtree t)))
+        (pri-value (* 1000 (- org-lowest-priority priority)))
+        (pri-current (org-get-priority (thing-at-point 'line t))))
+    (<span style="color: #b6a0ff;">if</span> (= pri-value pri-current)
+        subtree-end
+      nil)))
+
+(<span style="color: #b6a0ff;">setq</span> org-agenda-skip-deadline-if-done t)
+
+(<span style="color: #b6a0ff;">setq</span> org-agenda-custom-commands
+      '(
+        <span style="color: #989898;">;; </span><span style="color: #989898;">&#26085;&#27425;&#12450;&#12472;&#12455;&#12531;&#12480; &amp; TODO
+</span>        (<span style="color: #79a8ff;">"d"</span> <span style="color: #79a8ff;">"&#26085;&#27425;&#12450;&#12472;&#12455;&#12531;&#12480;&#12392;&#12377;&#12409;&#12390;&#12398;TODO"</span>
+
+         <span style="color: #989898;">;; </span><span style="color: #989898;">&#20778;&#20808;&#24230;A&#12398;&#12450;&#12452;&#12486;&#12512;&#12434;&#34920;&#31034;
+</span>         ((tags <span style="color: #79a8ff;">"PRIORITY=\"A\""</span>
+                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                 (org-agenda-overriding-header <span style="color: #79a8ff;">"&#39640;&#20778;&#20808;&#24230;&#12398;&#26410;&#23436;&#20102;&#12479;&#12473;&#12463;:"</span>)))
+
+          <span style="color: #989898;">;; </span><span style="color: #989898;">&#12459;&#12524;&#12531;&#12480;&#12540;&#12499;&#12517;&#12540;&#12391;7&#26085;&#20998;&#12434;&#34920;&#31034;
+</span>          (agenda <span style="color: #79a8ff;">""</span> ((org-agenda-span 7)))
+
+          <span style="color: #989898;">;; </span><span style="color: #989898;">&#20778;&#20808;&#24230;B&#12398;&#12450;&#12452;&#12486;&#12512;&#12434;&#34920;&#31034;&#65288;&#23455;&#36074;&#12399;A&#12539;C&#20197;&#22806;&#12398;&#12377;&#12409;&#12390;&#65289;
+</span>          (alltodo <span style="color: #79a8ff;">""</span>
+                   ((org-agenda-skip-function '(or (air-org-skip-subtree-if-priority ?A)
+                                                   (air-org-skip-subtree-if-priority ?C)
+                                                   (org-agenda-skip-if nil '(scheduled deadline))))
+                    (org-agenda-overriding-header <span style="color: #79a8ff;">"&#36890;&#24120;&#20778;&#20808;&#24230;&#12398;&#12479;&#12473;&#12463;:"</span>)))
+
+          <span style="color: #989898;">;; </span><span style="color: #989898;">&#20778;&#20808;&#24230;C&#12398;&#12450;&#12452;&#12486;&#12512;&#12434;&#34920;&#31034;
+</span>          (tags <span style="color: #79a8ff;">"PRIORITY=\"C\""</span>
+                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                 (org-agenda-overriding-header <span style="color: #79a8ff;">"&#20302;&#20778;&#20808;&#24230;&#12398;&#26410;&#23436;&#20102;&#12479;&#12473;&#12463;:"</span>)))
+          )
+
+         <span style="color: #989898;">;; </span><span style="color: #989898;">&#22311;&#32302;&#34920;&#31034;&#12375;&#12394;&#12356;&#65288;&#22909;&#12415;&#12395;&#24540;&#12376;&#12390;&#22793;&#26356;&#65289;
+</span>         ((org-agenda-compact-blocks nil)))
+        ))          
+</pre>
+</div>
+
+<p>
+アジェンダ選択ダイアログに <code>日次アジェンダとすべてのTODO</code> というオプションが追加され、~d~ で選択できるようになります。デフォルトビューよりずっと見やすく、しばらくの間はこれを主力ビューとして使っていました。ただし、リストが長くなると特定のアイテムが埋もれてしまうことがあります。次の解決策も見てみましょう。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf10074e" class="outline-2">
+<h2 id="orgf10074e"><span class="section-number-2">15.</span> 拡張アジェンダ #2</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+次のアジェンダ設定には <a href="https://github.com/alphapapa/org-super-agenda">Org Super Agenda</a> というパッケージを使います。Org Mode 入門者にはオーバースペックかもしれません。準備できていないと感じるなら、遠慮なく後回しにしてください。ただし、デフォルト設定を超えた拡張を望むようになったとき、このパッケージは素晴らしい選択肢です。先ほどのビューが Super Agenda でどう変わるか見てみましょう。
+</p>
+
+
+<div id="orge9813df" class="figure">
+<p><img src="images/agenda-super-view-screenshot.png" alt="agenda-super-view-screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 32: </span>アジェンダスーパービュー</p>
+</div>
+
+<p>
+なんという変わりようでしょう！アイテムが論理的なグループに整理され、タグで表示が煩雑になることもなく、優先度だけで絞り込むよりもグループ化が自然に感じられます。これが何の魔法かと言うと、Super Agenda の効果です。上記リンクで詳細ドキュメントを読めますが、要点はこうです。フィルターを設定すると、Super Agenda は定義した順にTODOアイテムに適用していきます。たとえばCRITICALタスクを最初のバケツに絞り込む設定をした場合、そのタスクが後のフィルター（要調査・ブロッカーなど）にも該当するとしても、最初のバケツにのみ表示されます。~:CRITICAL:~ タグを外せば下のバケツに落ちていきます。最後に、どのフィルターにも一致しないTODOがまとめて表示されます。フィルターに該当するTODOがなければ、そのバケツは表示されません。「観たい映画」バケツが表示されないのは、今のところ気になる映画を消化し終えているからです。Marvel が新作を公開すれば、そのバケツが復活します。簡単に聞こえますか？……実際、仕組みがわかってしまえば、かなりシンプルです。設定ファイルを見てみましょう。
+</p>
+</div>
+<div id="outline-container-orgeca0eb0" class="outline-3">
+<h3 id="orgeca0eb0"><span class="section-number-3">15.1.</span> アジェンダカスタムコマンド</h3>
+<div class="outline-text-3" id="text-15-1">
+<p>
+必要な部品はこちらです。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #b6a0ff;">setq</span> org-agenda-custom-commands
+      '(
+        <span style="color: #989898;">;; </span><span style="color: #989898;">James's &#12473;&#12540;&#12497;&#12540;&#12499;&#12517;&#12540;
+</span>        (<span style="color: #79a8ff;">"j"</span> <span style="color: #79a8ff;">"James's &#12473;&#12540;&#12497;&#12540;&#12499;&#12517;&#12540;"</span>
+         (
+          (agenda <span style="color: #79a8ff;">""</span>
+                  (
+                   (org-agenda-remove-tags t)                                       
+                   (org-agenda-span 7)
+                   )
+                  )
+
+          (alltodo <span style="color: #79a8ff;">""</span>
+                   (
+                    <span style="color: #989898;">;; </span><span style="color: #989898;">&#12479;&#12464;&#12434;&#38750;&#34920;&#31034;&#12395;&#12375;&#12390;&#12499;&#12517;&#12540;&#12434;&#12377;&#12387;&#12365;&#12426;&#12373;&#12379;&#12427;
+</span>                    (org-agenda-remove-tags t)
+                    (org-agenda-prefix-format <span style="color: #79a8ff;">"  %t  %s"</span>)                    
+                    (org-agenda-overriding-header <span style="color: #79a8ff;">"&#29694;&#22312;&#12398;&#29366;&#27841;"</span>)
+
+                    <span style="color: #989898;">;; </span><span style="color: #989898;">&#12473;&#12540;&#12497;&#12540;&#12450;&#12472;&#12455;&#12531;&#12480;&#12398;&#12464;&#12523;&#12540;&#12503;&#23450;&#32681;&#65288;&#38918;&#30058;&#36890;&#12426;&#12395;&#20966;&#29702;&#12373;&#12428;&#12427;&#65289;
+</span>                    (org-super-agenda-groups
+                     '(
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">CRITICAL &#12479;&#12464;&#12391;&#12501;&#12451;&#12523;&#12479;&#12522;&#12531;&#12464;
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#32202;&#24613;&#12479;&#12473;&#12463;"</span>
+                              <span style="color: #f78fe7;">:tag</span> <span style="color: #79a8ff;">"CRITICAL"</span>
+                              <span style="color: #f78fe7;">:order</span> 0
+                              )
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">IN-PROGRESS &#29366;&#24907;&#12391;&#12501;&#12451;&#12523;&#12479;&#12522;&#12531;&#12464;
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#29694;&#22312;&#20316;&#26989;&#20013;"</span>
+                              <span style="color: #f78fe7;">:todo</span> <span style="color: #79a8ff;">"IN-PROGRESS"</span>
+                              <span style="color: #f78fe7;">:order</span> 1
+                              )
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">PLANNING &#29366;&#24907;&#12391;&#12501;&#12451;&#12523;&#12479;&#12522;&#12531;&#12464;
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#27425;&#12398;&#12473;&#12486;&#12483;&#12503;&#12434;&#35336;&#30011;&#20013;"</span>
+                              <span style="color: #f78fe7;">:todo</span> <span style="color: #79a8ff;">"PLANNING"</span>
+                              <span style="color: #f78fe7;">:order</span> 2
+                              )
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">BLOCKED &#29366;&#24907;&#12414;&#12383;&#12399; obstacle &#12479;&#12464;&#12391;&#12501;&#12451;&#12523;&#12479;&#12522;&#12531;&#12464;
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#21839;&#38988;&#12539;&#12502;&#12525;&#12483;&#12459;&#12540;"</span>
+                              <span style="color: #f78fe7;">:todo</span> <span style="color: #79a8ff;">"BLOCKED"</span>
+                              <span style="color: #f78fe7;">:tag</span> <span style="color: #79a8ff;">"obstacle"</span>                              
+                              <span style="color: #f78fe7;">:order</span> 3
+                              )
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">@write_future_ticket &#12479;&#12464;&#12391;&#12501;&#12451;&#12523;&#12479;&#12522;&#12531;&#12464;
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#20316;&#25104;&#20104;&#23450;&#12398;&#12481;&#12465;&#12483;&#12488;"</span>
+                              <span style="color: #f78fe7;">:tag</span> <span style="color: #79a8ff;">"@write_future_ticket"</span>
+                              <span style="color: #f78fe7;">:order</span> 4
+                              )
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">@research &#12479;&#12464;&#12391;&#12501;&#12451;&#12523;&#12479;&#12522;&#12531;&#12464;
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#35201;&#35519;&#26619;"</span>
+                              <span style="color: #f78fe7;">:tag</span> <span style="color: #79a8ff;">"@research"</span>
+                              <span style="color: #f78fe7;">:order</span> 7
+                              )
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">meeting &#12479;&#12464;&#12363;&#12388;&#20778;&#20808;&#24230;A&#65288;&#20250;&#35696;&#12398;TODO&#12398;&#12415;&#34920;&#31034;&#65289;
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#20250;&#35696;&#12450;&#12463;&#12471;&#12519;&#12531;&#12450;&#12452;&#12486;&#12512;"</span>
+                              <span style="color: #f78fe7;">:and</span> (<span style="color: #f78fe7;">:tag</span> <span style="color: #79a8ff;">"meeting"</span> <span style="color: #f78fe7;">:priority</span> <span style="color: #79a8ff;">"A"</span>)
+                              <span style="color: #f78fe7;">:order</span> 8
+                              )
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">TODO &#29366;&#24907;&#12363;&#12388;&#20778;&#20808;&#24230;A &#12363;&#12388; meeting &#12479;&#12464;&#12394;&#12375;
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#12381;&#12398;&#20182;&#12398;&#37325;&#35201;&#12450;&#12452;&#12486;&#12512;"</span>
+                              <span style="color: #f78fe7;">:and</span> (<span style="color: #f78fe7;">:todo</span> <span style="color: #79a8ff;">"TODO"</span> <span style="color: #f78fe7;">:priority</span> <span style="color: #79a8ff;">"A"</span> <span style="color: #f78fe7;">:not</span> (<span style="color: #f78fe7;">:tag</span> <span style="color: #79a8ff;">"meeting"</span>))
+                              <span style="color: #f78fe7;">:order</span> 9
+                              )
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">TODO &#29366;&#24907;&#12363;&#12388;&#20778;&#20808;&#24230;B
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#19968;&#33324;&#12496;&#12483;&#12463;&#12525;&#12464;"</span>
+                              <span style="color: #f78fe7;">:and</span> (<span style="color: #f78fe7;">:todo</span> <span style="color: #79a8ff;">"TODO"</span> <span style="color: #f78fe7;">:priority</span> <span style="color: #79a8ff;">"B"</span>)
+                              <span style="color: #f78fe7;">:order</span> 10
+                              )
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">&#20778;&#20808;&#24230;C&#20197;&#19979;&#65288;&#23558;&#26469;&#12398;&#12373;&#12425;&#12395;&#20302;&#12356;&#20778;&#20808;&#24230;&#12418;&#12469;&#12509;&#12540;&#12488;&#65289;
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#38750;&#32202;&#24613;"</span>
+                              <span style="color: #f78fe7;">:priority&lt;=</span> <span style="color: #79a8ff;">"C"</span>
+                              <span style="color: #f78fe7;">:order</span> 11
+                              )
+                       <span style="color: #989898;">;; </span><span style="color: #989898;">VERIFYING &#29366;&#24907;&#12391;&#12501;&#12451;&#12523;&#12479;&#12522;&#12531;&#12464;
+</span>                       (<span style="color: #f78fe7;">:name</span> <span style="color: #79a8ff;">"&#29694;&#22312;&#30906;&#35469;&#20013;"</span>
+                              <span style="color: #f78fe7;">:todo</span> <span style="color: #79a8ff;">"VERIFYING"</span>
+                              <span style="color: #f78fe7;">:order</span> 20
+                              )
+                       )
+                     )
+                    )
+                   )
+          ))
+        ))
+</pre>
+</div>
+
+<p>
+これは、求めるものを正確に得るためにフィルターをさまざまに組み合わせる方法の好例です。さらなる改良のために Org Super Agenda のドキュメントも確認することをおすすめします。非常に洗練されたツールです。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org93d7104" class="outline-2">
+<h2 id="org93d7104"><span class="section-number-2">16.</span> おわりに</h2>
+<div class="outline-text-2" id="text-16">
+<p>
+このドキュメントが何かのお役に立てれば幸いです。Org Mode の習得は筆者にとって実りある経験でした。あなたにとっても同様であることを願っています。Emacs ユーザーの仲間よ、幸運を！
+</p>
+
+<p>
+なお、このドキュメント全体が Org Mode で書かれ、Markdown にエクスポートされています。十分な努力さえあれば、Emacs はほぼ何にでも使えることの証明でもあります。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: KaitoMuraoka</p>
+<p class="date">Created: 2026-03-22 Sun 13:30</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
